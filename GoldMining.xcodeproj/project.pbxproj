@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DCE558315A2E1D70099B114 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558215A2E1D70099B114 /* UIKit.framework */; };
+		4DCE558515A2E1D70099B114 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558415A2E1D70099B114 /* Foundation.framework */; };
+		4DCE558715A2E1D70099B114 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558615A2E1D70099B114 /* CoreGraphics.framework */; };
+		4DCE558D15A2E1D70099B114 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DCE558B15A2E1D70099B114 /* InfoPlist.strings */; };
+		4DCE558F15A2E1D70099B114 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE558E15A2E1D70099B114 /* main.m */; };
+		4DCE559315A2E1D70099B114 /* GoldMiningAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE559215A2E1D70099B114 /* GoldMiningAppDelegate.m */; };
+		4DCE559615A2E1D70099B114 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCE559415A2E1D70099B114 /* MainStoryboard.storyboard */; };
+		4DCE559915A2E1D70099B114 /* GoldMiningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE559815A2E1D70099B114 /* GoldMiningViewController.m */; };
+		4DCE55A115A2E1D70099B114 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE55A015A2E1D70099B114 /* SenTestingKit.framework */; };
+		4DCE55A215A2E1D70099B114 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558215A2E1D70099B114 /* UIKit.framework */; };
+		4DCE55A315A2E1D70099B114 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558415A2E1D70099B114 /* Foundation.framework */; };
+		4DCE55AB15A2E1D70099B114 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DCE55A915A2E1D70099B114 /* InfoPlist.strings */; };
+		4DCE55AE15A2E1D80099B114 /* GoldMiningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE55AD15A2E1D80099B114 /* GoldMiningTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DCE55A415A2E1D70099B114 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DCE557515A2E1D70099B114 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DCE557D15A2E1D70099B114;
+			remoteInfo = GoldMining;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4DCE557E15A2E1D70099B114 /* GoldMining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldMining.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DCE558215A2E1D70099B114 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4DCE558415A2E1D70099B114 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4DCE558615A2E1D70099B114 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4DCE558A15A2E1D70099B114 /* GoldMining-Info.plist */ = {isa = PBXFileReference; path = "GoldMining-Info.plist"; sourceTree = "<group>"; };
+		4DCE558C15A2E1D70099B114 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4DCE558E15A2E1D70099B114 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4DCE559015A2E1D70099B114 /* GoldMining-Prefix.pch */ = {isa = PBXFileReference; path = "GoldMining-Prefix.pch"; sourceTree = "<group>"; };
+		4DCE559115A2E1D70099B114 /* GoldMiningAppDelegate.h */ = {isa = PBXFileReference; path = GoldMiningAppDelegate.h; sourceTree = "<group>"; };
+		4DCE559215A2E1D70099B114 /* GoldMiningAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoldMiningAppDelegate.m; sourceTree = "<group>"; };
+		4DCE559515A2E1D70099B114 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4DCE559715A2E1D70099B114 /* GoldMiningViewController.h */ = {isa = PBXFileReference; path = GoldMiningViewController.h; sourceTree = "<group>"; };
+		4DCE559815A2E1D70099B114 /* GoldMiningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoldMiningViewController.m; sourceTree = "<group>"; };
+		4DCE559F15A2E1D70099B114 /* GoldMiningTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoldMiningTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DCE55A015A2E1D70099B114 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		4DCE55A815A2E1D70099B114 /* GoldMiningTests-Info.plist */ = {isa = PBXFileReference; path = "GoldMiningTests-Info.plist"; sourceTree = "<group>"; };
+		4DCE55AA15A2E1D70099B114 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4DCE55AC15A2E1D70099B114 /* GoldMiningTests.h */ = {isa = PBXFileReference; path = GoldMiningTests.h; sourceTree = "<group>"; };
+		4DCE55AD15A2E1D80099B114 /* GoldMiningTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoldMiningTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DCE557B15A2E1D70099B114 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DCE558315A2E1D70099B114 /* UIKit.framework in Frameworks */,
+				4DCE558515A2E1D70099B114 /* Foundation.framework in Frameworks */,
+				4DCE558715A2E1D70099B114 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DCE559B15A2E1D70099B114 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DCE55A115A2E1D70099B114 /* SenTestingKit.framework in Frameworks */,
+				4DCE55A215A2E1D70099B114 /* UIKit.framework in Frameworks */,
+				4DCE55A315A2E1D70099B114 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DCE557315A2E1D70099B114 = {
+			isa = PBXGroup;
+			children = (
+				4DCE558815A2E1D70099B114 /* GoldMining */,
+				4DCE55A615A2E1D70099B114 /* GoldMiningTests */,
+				4DCE558115A2E1D70099B114 /* Frameworks */,
+				4DCE557F15A2E1D70099B114 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DCE557F15A2E1D70099B114 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DCE557E15A2E1D70099B114 /* GoldMining.app */,
+				4DCE559F15A2E1D70099B114 /* GoldMiningTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DCE558115A2E1D70099B114 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DCE558215A2E1D70099B114 /* UIKit.framework */,
+				4DCE558415A2E1D70099B114 /* Foundation.framework */,
+				4DCE558615A2E1D70099B114 /* CoreGraphics.framework */,
+				4DCE55A015A2E1D70099B114 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DCE558815A2E1D70099B114 /* GoldMining */ = {
+			isa = PBXGroup;
+			children = (
+				4DCE559115A2E1D70099B114 /* GoldMiningAppDelegate.h */,
+				4DCE559215A2E1D70099B114 /* GoldMiningAppDelegate.m */,
+				4DCE559415A2E1D70099B114 /* MainStoryboard.storyboard */,
+				4DCE559715A2E1D70099B114 /* GoldMiningViewController.h */,
+				4DCE559815A2E1D70099B114 /* GoldMiningViewController.m */,
+				4DCE558915A2E1D70099B114 /* Supporting Files */,
+			);
+			path = GoldMining;
+			sourceTree = "<group>";
+		};
+		4DCE558915A2E1D70099B114 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DCE558A15A2E1D70099B114 /* GoldMining-Info.plist */,
+				4DCE558B15A2E1D70099B114 /* InfoPlist.strings */,
+				4DCE558E15A2E1D70099B114 /* main.m */,
+				4DCE559015A2E1D70099B114 /* GoldMining-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DCE55A615A2E1D70099B114 /* GoldMiningTests */ = {
+			isa = PBXGroup;
+			children = (
+				4DCE55AC15A2E1D70099B114 /* GoldMiningTests.h */,
+				4DCE55AD15A2E1D80099B114 /* GoldMiningTests.m */,
+				4DCE55A715A2E1D70099B114 /* Supporting Files */,
+			);
+			path = GoldMiningTests;
+			sourceTree = "<group>";
+		};
+		4DCE55A715A2E1D70099B114 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DCE55A815A2E1D70099B114 /* GoldMiningTests-Info.plist */,
+				4DCE55A915A2E1D70099B114 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DCE557D15A2E1D70099B114 /* GoldMining */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DCE55B115A2E1D80099B114 /* Build configuration list for PBXNativeTarget "GoldMining" */;
+			buildPhases = (
+				4DCE557A15A2E1D70099B114 /* Sources */,
+				4DCE557B15A2E1D70099B114 /* Frameworks */,
+				4DCE557C15A2E1D70099B114 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoldMining;
+			productName = GoldMining;
+			productReference = 4DCE557E15A2E1D70099B114 /* GoldMining.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DCE559E15A2E1D70099B114 /* GoldMiningTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DCE55B415A2E1D80099B114 /* Build configuration list for PBXNativeTarget "GoldMiningTests" */;
+			buildPhases = (
+				4DCE559A15A2E1D70099B114 /* Sources */,
+				4DCE559B15A2E1D70099B114 /* Frameworks */,
+				4DCE559C15A2E1D70099B114 /* Resources */,
+				4DCE559D15A2E1D70099B114 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DCE55A515A2E1D70099B114 /* PBXTargetDependency */,
+			);
+			name = GoldMiningTests;
+			productName = GoldMiningTests;
+			productReference = 4DCE559F15A2E1D70099B114 /* GoldMiningTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DCE557515A2E1D70099B114 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GoldMining;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 4DCE557815A2E1D70099B114 /* Build configuration list for PBXProject "GoldMining" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4DCE557315A2E1D70099B114;
+			productRefGroup = 4DCE557F15A2E1D70099B114 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DCE557D15A2E1D70099B114 /* GoldMining */,
+				4DCE559E15A2E1D70099B114 /* GoldMiningTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DCE557C15A2E1D70099B114 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DCE558D15A2E1D70099B114 /* InfoPlist.strings in Resources */,
+				4DCE559615A2E1D70099B114 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DCE559C15A2E1D70099B114 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DCE55AB15A2E1D70099B114 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DCE559D15A2E1D70099B114 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DCE557A15A2E1D70099B114 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DCE558F15A2E1D70099B114 /* main.m in Sources */,
+				4DCE559315A2E1D70099B114 /* GoldMiningAppDelegate.m in Sources */,
+				4DCE559915A2E1D70099B114 /* GoldMiningViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DCE559A15A2E1D70099B114 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DCE55AE15A2E1D80099B114 /* GoldMiningTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DCE55A515A2E1D70099B114 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DCE557D15A2E1D70099B114 /* GoldMining */;
+			targetProxy = 4DCE55A415A2E1D70099B114 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4DCE558B15A2E1D70099B114 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DCE558C15A2E1D70099B114 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4DCE559415A2E1D70099B114 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DCE559515A2E1D70099B114 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		4DCE55A915A2E1D70099B114 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DCE55AA15A2E1D70099B114 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4DCE55AF15A2E1D80099B114 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4DCE55B015A2E1D80099B114 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4DCE55B215A2E1D80099B114 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoldMining/GoldMining-Prefix.pch";
+				INFOPLIST_FILE = "GoldMining/GoldMining-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4DCE55B315A2E1D80099B114 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoldMining/GoldMining-Prefix.pch";
+				INFOPLIST_FILE = "GoldMining/GoldMining-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4DCE55B515A2E1D80099B114 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GoldMining.app/GoldMining";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoldMining/GoldMining-Prefix.pch";
+				INFOPLIST_FILE = "GoldMiningTests/GoldMiningTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		4DCE55B615A2E1D80099B114 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GoldMining.app/GoldMining";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoldMining/GoldMining-Prefix.pch";
+				INFOPLIST_FILE = "GoldMiningTests/GoldMiningTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DCE557815A2E1D70099B114 /* Build configuration list for PBXProject "GoldMining" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DCE55AF15A2E1D80099B114 /* Debug */,
+				4DCE55B015A2E1D80099B114 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DCE55B115A2E1D80099B114 /* Build configuration list for PBXNativeTarget "GoldMining" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DCE55B215A2E1D80099B114 /* Debug */,
+				4DCE55B315A2E1D80099B114 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4DCE55B415A2E1D80099B114 /* Build configuration list for PBXNativeTarget "GoldMiningTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DCE55B515A2E1D80099B114 /* Debug */,
+				4DCE55B615A2E1D80099B114 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DCE557515A2E1D70099B114 /* Project object */;
+}
