@@ -10,7 +10,6 @@
 
 @interface GoldMiningViewController ()
 
-- (IBAction)playPressed:(id)sender ;
 - (IBAction)scorePressed:(id)sender ;
 - (IBAction)infoPressed:(id)sender ;
 
@@ -34,10 +33,6 @@
 {
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
-- (IBAction)playPressed:(id)sender 
-{
-    // run Play View
-}
 
 - (IBAction)scorePressed:(id)sender 
 {
@@ -47,6 +42,7 @@
 - (IBAction)infoPressed:(id)sender 
 {
     // run Info View
+    [[[UIAlertView alloc] initWithTitle:@"About GoldMining"message:@"This is an iPhone Game" delegate:nil cancelButtonTitle:@"Done" otherButtonTitles:nil, nil] show];
 }
 
 
