@@ -13,6 +13,8 @@
 @end
 
 @implementation GoldMiningPlayGame
+@synthesize timerLabel;
+@synthesize GamePauseBtn;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,9 +26,38 @@
 }
 
 int Row = 10, Col = 13, btnSize = 30;
-
+-(IBAction)clickGamePause:(id)sender//按下暫停按鈕
+{
+    ispause = YES;
+}
+- (void)updateCounter:(NSTimer *)theTimer {
+	//static int count = 120;
+    if(time_count==0||ispause!=NO)
+    {
+    //時間到暫停遊戲
+    }
+    else
+    {
+	time_count--;
+	NSString *s = [[NSString alloc]
+                   initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
+	self.timerLabel.text = s;
+    }
+	
+}
 - (void)viewDidLoad
 {
+    /*timer*/
+    
+    self.timerLabel.text = @"\t2:\t00";
+    ispause=NO;
+    time_count=120;
+	[NSTimer scheduledTimerWithTimeInterval:1.0f
+                                     target:self
+                                   selector:@selector(updateCounter:)
+                                   userInfo:nil
+                                    repeats:YES];
+    /*timer end*/
     for(int i = 0; i < Row; i++)
     {
         for(int j = 0; j < Col; j++)
@@ -49,6 +80,8 @@ int Row = 10, Col = 13, btnSize = 30;
 
 - (void)viewDidUnload
 {
+    [self setTimerLabel:nil];
+    [self setGamePauseBtn:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
