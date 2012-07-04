@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D26F9EC15A4058300712D88 /* GoldMiningSelectLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D26F9EB15A4058300712D88 /* GoldMiningSelectLevel.m */; };
+		4D26F9F415A40F5000712D88 /* GoldMiningPlayGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D26F9F315A40F5000712D88 /* GoldMiningPlayGame.m */; };
 		4DCE558315A2E1D70099B114 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558215A2E1D70099B114 /* UIKit.framework */; };
 		4DCE558515A2E1D70099B114 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558415A2E1D70099B114 /* Foundation.framework */; };
 		4DCE558715A2E1D70099B114 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558615A2E1D70099B114 /* CoreGraphics.framework */; };
@@ -69,6 +70,8 @@
 /* Begin PBXFileReference section */
 		4D26F9EA15A4058300712D88 /* GoldMiningSelectLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldMiningSelectLevel.h; sourceTree = "<group>"; };
 		4D26F9EB15A4058300712D88 /* GoldMiningSelectLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldMiningSelectLevel.m; sourceTree = "<group>"; };
+		4D26F9F215A40F5000712D88 /* GoldMiningPlayGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldMiningPlayGame.h; sourceTree = "<group>"; };
+		4D26F9F315A40F5000712D88 /* GoldMiningPlayGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldMiningPlayGame.m; sourceTree = "<group>"; };
 		4DCE557E15A2E1D70099B114 /* GoldMining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldMining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCE558215A2E1D70099B114 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4DCE558415A2E1D70099B114 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -184,6 +187,8 @@
 				4DCE559115A2E1D70099B114 /* GoldMiningAppDelegate.h */,
 				4DCE559215A2E1D70099B114 /* GoldMiningAppDelegate.m */,
 				4DCE559415A2E1D70099B114 /* MainStoryboard.storyboard */,
+				4D26F9F215A40F5000712D88 /* GoldMiningPlayGame.h */,
+				4D26F9F315A40F5000712D88 /* GoldMiningPlayGame.m */,
 				4D26F9EA15A4058300712D88 /* GoldMiningSelectLevel.h */,
 				4D26F9EB15A4058300712D88 /* GoldMiningSelectLevel.m */,
 				4DCE559715A2E1D70099B114 /* GoldMiningViewController.h */,
@@ -439,6 +444,7 @@
 				4DCE559315A2E1D70099B114 /* GoldMiningAppDelegate.m in Sources */,
 				4DCE559915A2E1D70099B114 /* GoldMiningViewController.m in Sources */,
 				4D26F9EC15A4058300712D88 /* GoldMiningSelectLevel.m in Sources */,
+				4D26F9F415A40F5000712D88 /* GoldMiningPlayGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
