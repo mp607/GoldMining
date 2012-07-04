@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4D26F9EC15A4058300712D88 /* GoldMiningSelectLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D26F9EB15A4058300712D88 /* GoldMiningSelectLevel.m */; };
 		4D26F9F415A40F5000712D88 /* GoldMiningPlayGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D26F9F315A40F5000712D88 /* GoldMiningPlayGame.m */; };
+		4D26FA0315A421C200712D88 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D26FA0215A421C200712D88 /* pause.png */; };
+		4D26FA0615A424C300712D88 /* b_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D26FA0415A424C300712D88 /* b_star.png */; };
+		4D26FA0715A424C300712D88 /* g_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D26FA0515A424C300712D88 /* g_star.png */; };
 		4DCE558315A2E1D70099B114 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558215A2E1D70099B114 /* UIKit.framework */; };
 		4DCE558515A2E1D70099B114 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558415A2E1D70099B114 /* Foundation.framework */; };
 		4DCE558715A2E1D70099B114 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558615A2E1D70099B114 /* CoreGraphics.framework */; };
@@ -72,6 +75,9 @@
 		4D26F9EB15A4058300712D88 /* GoldMiningSelectLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldMiningSelectLevel.m; sourceTree = "<group>"; };
 		4D26F9F215A40F5000712D88 /* GoldMiningPlayGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldMiningPlayGame.h; sourceTree = "<group>"; };
 		4D26F9F315A40F5000712D88 /* GoldMiningPlayGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldMiningPlayGame.m; sourceTree = "<group>"; };
+		4D26FA0215A421C200712D88 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		4D26FA0415A424C300712D88 /* b_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b_star.png; sourceTree = "<group>"; };
+		4D26FA0515A424C300712D88 /* g_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = g_star.png; sourceTree = "<group>"; };
 		4DCE557E15A2E1D70099B114 /* GoldMining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldMining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCE558215A2E1D70099B114 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4DCE558415A2E1D70099B114 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -240,6 +246,7 @@
 		4DF2953315A3D8AB00BB6199 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				4D26FA0215A421C200712D88 /* pause.png */,
 				4DF2953415A3D8AB00BB6199 /* info.png */,
 				4DF2953515A3D8AB00BB6199 /* play.png */,
 				4DF2953615A3D8AB00BB6199 /* score.png */,
@@ -262,6 +269,8 @@
 		4DF2953C15A3D8AB00BB6199 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				4D26FA0415A424C300712D88 /* b_star.png */,
+				4D26FA0515A424C300712D88 /* g_star.png */,
 				4DF2953D15A3D8AB00BB6199 /* b.png */,
 				4DF2953E15A3D8AB00BB6199 /* g.png */,
 				4DF2953F15A3D8AB00BB6199 /* Number */,
@@ -406,6 +415,9 @@
 				4DF2957615A3D8AB00BB6199 /* r6.png in Resources */,
 				4DF2957715A3D8AB00BB6199 /* r7.png in Resources */,
 				4DF2957815A3D8AB00BB6199 /* r8.png in Resources */,
+				4D26FA0315A421C200712D88 /* pause.png in Resources */,
+				4D26FA0615A424C300712D88 /* b_star.png in Resources */,
+				4D26FA0715A424C300712D88 /* g_star.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +557,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoldMining/GoldMining-Prefix.pch";
 				INFOPLIST_FILE = "GoldMining/GoldMining-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -556,6 +569,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoldMining/GoldMining-Prefix.pch";
 				INFOPLIST_FILE = "GoldMining/GoldMining-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
