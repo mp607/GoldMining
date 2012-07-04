@@ -25,11 +25,6 @@
     return self;
 }
 
-int Row = 10, Col = 13, btnSize = 30;
-
-#define START_TOP 100
-#define START_LEFT 10
-
 -(IBAction)clickGamePause:(id)sender//按下暫停按鈕
 {
     ispause = YES;
@@ -49,6 +44,11 @@ int Row = 10, Col = 13, btnSize = 30;
     }
 	
 }
+
+int Row = 10, Col = 13, btnSize = 30;
+
+#define START_TOP 100
+#define START_LEFT 10
 
 - (void)viewDidLoad
 {
