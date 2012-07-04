@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D60199015A3E0AF0061366C /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D60198F15A3E0AF0061366C /* Twitter.framework */; };
 		4DCE558315A2E1D70099B114 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558215A2E1D70099B114 /* UIKit.framework */; };
 		4DCE558515A2E1D70099B114 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558415A2E1D70099B114 /* Foundation.framework */; };
 		4DCE558715A2E1D70099B114 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558615A2E1D70099B114 /* CoreGraphics.framework */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D60198F15A3E0AF0061366C /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		4DCE557E15A2E1D70099B114 /* GoldMining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoldMining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCE558215A2E1D70099B114 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4DCE558415A2E1D70099B114 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -125,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D60199015A3E0AF0061366C /* Twitter.framework in Frameworks */,
 				4DCE558315A2E1D70099B114 /* UIKit.framework in Frameworks */,
 				4DCE558515A2E1D70099B114 /* Foundation.framework in Frameworks */,
 				4DCE558715A2E1D70099B114 /* CoreGraphics.framework in Frameworks */,
@@ -147,6 +150,7 @@
 		4DCE557315A2E1D70099B114 = {
 			isa = PBXGroup;
 			children = (
+				4D60198F15A3E0AF0061366C /* Twitter.framework */,
 				4DF2953215A3D8AB00BB6199 /* Rescourse */,
 				4DCE558815A2E1D70099B114 /* GoldMining */,
 				4DCE55A615A2E1D70099B114 /* GoldMiningTests */,

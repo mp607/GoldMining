@@ -7,6 +7,7 @@
 //
 
 #import "GoldMiningViewController.h"
+#import <Twitter/Twitter.h>
 
 @interface GoldMiningViewController ()
 
@@ -49,5 +50,16 @@
     // run Info View
 }
 
+- (IBAction)twitterPressed:(id)sender 
+{
+    //建立viewcontroller
+    TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
+        
+    //設定推文的內容
+    [twitter setInitialText:@"iOS 5 Twitter API 測試。"];
+        
+    //顯示viewcontroller
+    [self presentModalViewController:twitter animated:YES];
+}
 
 @end
