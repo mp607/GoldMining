@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2541" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1875"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Gold Mining View Controller-->
@@ -139,10 +139,6 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="pause.png" id="uiW-C3-KCE">
-                                <rect key="frame" x="246" y="20" width="54" height="54"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="30:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="skJ-2m-PZ4">
                                 <rect key="frame" x="106" y="16" width="108" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -172,9 +168,28 @@
                                 <rect key="frame" x="20" y="46" width="28" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zac-hs-msn">
+                                <rect key="frame" x="246" y="23" width="54" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="pause.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickGamePause:" destination="gQ4-Nr-anb" eventType="touchUpInside" id="bAn-q4-FkO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="GamePauseBtn" destination="zac-hs-msn" id="DSZ-g6-ZsR"/>
+                        <outlet property="timerLabel" destination="skJ-2m-PZ4" id="eyS-97-fbz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNj-p2-Niq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,7 +198,7 @@
     </scenes>
     <resources>
         <image name="b.png" width="100" height="100"/>
-        <image name="g.png" width="100" height="100"/>
+        <image name="g.png" width="64" height="64"/>
         <image name="info.png" width="400" height="250"/>
         <image name="pause.png" width="128" height="128"/>
         <image name="play.png" width="400" height="250"/>
@@ -192,6 +207,11 @@
     <classes>
         <class className="GoldMiningPlayGame" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningPlayGame.h"/>
+            <relationships>
+                <relationship kind="action" name="clickGamePause:"/>
+                <relationship kind="outlet" name="GamePauseBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="timerLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="GoldMiningSelectLevel" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningSelectLevel.h"/>
