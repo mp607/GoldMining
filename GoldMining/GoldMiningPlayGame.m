@@ -25,6 +25,10 @@
 
 int Row = 10, Col = 13, btnSize = 30;
 
+#define START_TOP 100
+#define START_LEFT 10
+
+
 - (void)viewDidLoad
 {
     for(int i = 0; i < Row; i++)
@@ -32,7 +36,7 @@ int Row = 10, Col = 13, btnSize = 30;
         for(int j = 0; j < Col; j++)
         {
             //动态添加一个按钮
-            CGRect frame = CGRectMake(i * btnSize + 10, j * btnSize + 50, btnSize, btnSize);
+            CGRect frame = CGRectMake(i * btnSize + START_LEFT, j * btnSize + START_TOP, btnSize, btnSize);
             UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             button.frame = frame;
             [button setTitle:@"？" forState: UIControlStateNormal];  
