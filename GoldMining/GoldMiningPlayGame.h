@@ -15,6 +15,6 @@
 }
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (weak, nonatomic) IBOutlet UIButton *GamePauseBtn;
--(IBAction)clickGamePause:(id)sender;
+- (IBAction)clickGamePause:(id)sender;
 
 @end
