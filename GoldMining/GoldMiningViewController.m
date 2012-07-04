@@ -10,6 +10,10 @@
 
 @interface GoldMiningViewController ()
 
+- (IBAction)playPressed:(id)sender ;
+- (IBAction)scorePressed:(id)sender ;
+- (IBAction)infoPressed:(id)sender ;
+
 @end
 
 @implementation GoldMiningViewController
@@ -30,5 +34,20 @@
 {
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+- (IBAction)playPressed:(id)sender 
+{
+    // run Play View
+}
+
+- (IBAction)scorePressed:(id)sender 
+{
+    // run Score View
+}
+
+- (IBAction)infoPressed:(id)sender 
+{
+    // run Info View
+}
+
 
 @end
