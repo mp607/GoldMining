@@ -27,6 +27,7 @@
 @synthesize timerLabel;
 @synthesize GamePauseBtn;
 @synthesize levelSelect;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

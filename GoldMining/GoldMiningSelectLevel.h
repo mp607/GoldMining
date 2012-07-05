@@ -10,4 +10,6 @@
 
 @interface GoldMiningSelectLevel : UIViewController
 
+@property (strong) NSNumber *level; // 難度
+
 @end

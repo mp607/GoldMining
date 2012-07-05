@@ -13,6 +13,7 @@
 @end
 
 @implementation GoldMiningSelectLevel
+@synthesize level;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +41,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-NSNumber *level;
 - (IBAction)levelSelectPressed:(UIButton *)sender 
 {
     level = [[NSNumber alloc] initWithInt:sender.tag];
