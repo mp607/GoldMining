@@ -24,7 +24,7 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 - (void)putButton:(int)level ;  // 放按鈕
 - (IBAction)clickGamePause:(id)sender ; //按下暫停按鈕
 
-- (void)updateCounter:(NSTimer *)theTimer ;  // UpdateTimer
+- (void)updateTimer:(NSTimer *)theTimer ;  // UpdateTimer
 - (IBAction) buttonClicked:(id)sender ;  // 踩踩樂
 
 - (void)gameOver:(int)score ;  // 顯示成績之類
@@ -82,7 +82,7 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
     self.timerLabel.text = @"\t2:\t00";
     ispause=NO;
     time_count=120;
-	[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
 }
 
 - (void)putButton:(int)level
@@ -751,7 +751,7 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
     // 重來 -> 清掉所有產生的東西 重新配置
 }
 
-- (void)updateCounter:(NSTimer *)theTimer {
+- (void)updateTimer:(NSTimer *)theTimer {
 	//static int count = 120;
     if(time_count==0||ispause!=NO)
     {
