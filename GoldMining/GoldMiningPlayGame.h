@@ -19,4 +19,7 @@
 
 @property NSNumber *levelSelect;    // 接收SelectLevel傳來的level
 
+@property (weak, nonatomic) IBOutlet UILabel *lblA;
+@property (weak, nonatomic) IBOutlet UILabel *lblB;
+
 @end

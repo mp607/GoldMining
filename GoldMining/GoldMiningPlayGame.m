@@ -24,6 +24,8 @@
 @end
 
 @implementation GoldMiningPlayGame
+@synthesize lblA;
+@synthesize lblB;
 @synthesize timerLabel;
 @synthesize GamePauseBtn;
 @synthesize levelSelect;
@@ -49,6 +51,8 @@
     [self setTimerLabel:nil];
     [self setGamePauseBtn:nil];
     // 記得清掉所有產生的button
+    [self setLblA:nil];
+    [self setLblB:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
