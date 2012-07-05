@@ -558,7 +558,7 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;
             /*
             switch ([((NSNumber*)[arrGame objectAtIndex:k]) intValue]) {
                 case 11:
-                    [button setImage:[UIImage imageNamed:@"f1.png"] forState:UIControlStateNormal];
+                    [button se tImage:[UIImage imageNamed:@"f1.png"] forState:UIControlStateNormal];
                     break;
                 
                 case 12:
