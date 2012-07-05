@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *GamePauseBtn;
 - (IBAction)clickGamePause:(id)sender;
 
+@property NSNumber *levelSelect;    // 傳Level用
+
 @end

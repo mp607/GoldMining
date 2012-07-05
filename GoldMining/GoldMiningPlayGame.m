@@ -26,7 +26,7 @@
 @implementation GoldMiningPlayGame
 @synthesize timerLabel;
 @synthesize GamePauseBtn;
-
+@synthesize levelSelect;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,8 +38,7 @@
 
 - (void)viewDidLoad
 {
-#define LEVEL 1
-    [self setGame:LEVEL];
+    [self setGame:[levelSelect intValue]];  // 設定難度
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -60,8 +59,8 @@
 
 - (void)setGame:(int)level
 {
-    [self putTimer:level];
-    [self putButton:level];
+    [self putTimer:level];  // 放TImer
+    [self putButton:level]; // 放Button
 }
 
 - (void)putTimer:(int)level

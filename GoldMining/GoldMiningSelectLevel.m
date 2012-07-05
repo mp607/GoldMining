@@ -40,4 +40,19 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+NSNumber *level;
+- (IBAction)levelSelectPressed:(UIButton *)sender 
+{
+    level = [[NSNumber alloc] initWithInt:sender.tag];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    //將page2設定成Storyboard Segue的目標UIViewController
+    id page2 = segue.destinationViewController;
+    
+    //將值透過Storyboard Segue帶給頁面2的string變數
+    [page2 setValue:level forKey:@"levelSelect"];
+}
+
 @end

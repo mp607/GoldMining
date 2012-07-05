@@ -90,6 +90,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="levelSelectPressed:" destination="kkV-Qp-bbQ" eventType="touchUpInside" id="Vcr-Mh-Yoq"/>
                                     <segue destination="gQ4-Nr-anb" kind="modal" id="yiq-ma-KJQ"/>
                                 </connections>
                             </button>
@@ -105,6 +106,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="levelSelectPressed:" destination="kkV-Qp-bbQ" eventType="touchUpInside" id="u00-00-uUW"/>
                                     <segue destination="gQ4-Nr-anb" kind="modal" id="GOv-tn-v82"/>
                                 </connections>
                             </button>
@@ -120,6 +122,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="levelSelectPressed:" destination="kkV-Qp-bbQ" eventType="touchUpInside" id="oEF-Re-ta4"/>
                                     <segue destination="gQ4-Nr-anb" kind="modal" id="aqD-To-Drg"/>
                                 </connections>
                             </button>
@@ -208,6 +211,7 @@
         <class className="GoldMiningPlayGame" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningPlayGame.h"/>
             <relationships>
+                <relationship kind="action" name="buttonClicked:"/>
                 <relationship kind="action" name="clickGamePause:"/>
                 <relationship kind="outlet" name="GamePauseBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="timerLabel" candidateClass="UILabel"/>
