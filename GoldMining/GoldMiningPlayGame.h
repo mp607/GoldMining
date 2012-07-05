@@ -9,12 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface GoldMiningPlayGame : UIViewController
-{
-    Boolean ispause;
-    int time_count;
-}
+
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
-@property (weak, nonatomic) IBOutlet UIButton *GamePauseBtn;
 - (IBAction)clickGamePause:(id)sender;
 
 @property NSNumber *levelSelect;    // 接收SelectLevel傳來的level

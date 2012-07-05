@@ -18,7 +18,10 @@
 int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，依據level改變難度
 
 @interface GoldMiningPlayGame ()
-
+{
+    Boolean isPause;
+    int time_count;
+}
 - (void)setGame:(int)level ;    // 初始化
 - (void)putTimer:(int)level ;   // 設定Timer
 - (void)putButton:(int)level ;  // 放按鈕
@@ -27,8 +30,10 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 - (void)updateTimer:(NSTimer *)theTimer ;  // UpdateTimer
 - (IBAction) buttonClicked:(id)sender ;  // 踩踩樂
 
-- (void)gameOver:(int)score ;  // 顯示成績之類
+- (void)gameOver ;  // 顯示成績之類
 - (void)saveScore:(NSString *)name: (int)score ;    // 記錄成績
+
+@property NSTimer *timer;
 
 @end
 
@@ -36,8 +41,8 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 @synthesize lblA;
 @synthesize lblB;
 @synthesize timerLabel;
-@synthesize GamePauseBtn;
 @synthesize levelSelect;
+@synthesize timer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,8 +62,8 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 
 - (void)viewDidUnload
 {
+    [self releaseGame];
     [self setTimerLabel:nil];
-    [self setGamePauseBtn:nil];
     // 記得清掉所有產生的button
     [self setLblA:nil];
     [self setLblB:nil];
@@ -79,10 +84,21 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 
 - (void)putTimer:(int)level
 {
-    self.timerLabel.text = @"\t2:\t00";
-    ispause=NO;
-    time_count=120;
-	[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
+    isPause = NO;
+    // 依據level改變時間限制
+    switch (level) {
+        case 1:
+            time_count = 120;
+            break;
+        case 2:
+            time_count = 200;
+        case 3:
+            time_count = 300;
+        default:
+            break;
+    }
+    self.timerLabel.text = [[NSString alloc] initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
 }
 
 - (void)putButton:(int)level
@@ -744,7 +760,7 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 
 - (IBAction)clickGamePause:(id)sender//按下暫停按鈕
 {
-    ispause = YES;
+    isPause = YES;
     // addSubView 繼續 選難度 重來
     // 繼續 -> 清掉subview 計時器繼續
     // 選難度 -> 回到SelectLevel 並清掉此View所有產生的東西
@@ -753,12 +769,10 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 
 - (void)updateTimer:(NSTimer *)theTimer {
 	//static int count = 120;
-    if(time_count==0||ispause!=NO)
-    {
-        //時間到暫停遊戲
-    }
-    else
-    {
+    if(time_count == 0) {
+        // Game Over
+        [self gameOver];
+    } else if(!isPause){    // isPause == NO -> run
         time_count--;
         NSString *s = [[NSString alloc]
                        initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
@@ -889,8 +903,9 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
     //[[[UIAlertView alloc] initWithTitle:@"遊戲結束" message:strB delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil] show];        // GameOver Alert
 }
 
-- (void)gameOver:(int)score
+- (void)gameOver
 {
+    [timer invalidate]; // 用不到了，清掉Timer
     // 顯示成績 儲存成績之類
     // addSubView (?) 打星星
     // 主畫面 選難度 下一難度
@@ -899,6 +914,11 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 - (void)saveScore:(NSString *)name: (int)score
 {
     // 成績扔到SQLite
+}
+
+- (void)releaseGame
+{
+    timer = nil;
 }
 
 @end

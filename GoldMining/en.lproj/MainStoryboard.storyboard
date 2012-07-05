@@ -190,7 +190,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="GamePauseBtn" destination="zac-hs-msn" id="DSZ-g6-ZsR"/>
                         <outlet property="lblA" destination="0Rk-Ru-D5j" id="Kwo-7G-Qon"/>
                         <outlet property="lblB" destination="nz1-Ke-ajk" id="7WO-WV-ovt"/>
                         <outlet property="timerLabel" destination="skJ-2m-PZ4" id="eyS-97-fbz"/>
@@ -215,7 +214,6 @@
             <relationships>
                 <relationship kind="action" name="buttonClicked:"/>
                 <relationship kind="action" name="clickGamePause:"/>
-                <relationship kind="outlet" name="GamePauseBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lblA" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblB" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="timerLabel" candidateClass="UILabel"/>
