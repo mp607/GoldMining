@@ -49,7 +49,7 @@ UIView *pauseView;
 - (IBAction)levelBtnPressed:(id)sender ;
 - (IBAction)rePlayBtnPressed:(id)sender ;
 
-- (void)gameOver ;  // 顯示成績之類
+- (void)gameOver:(int)result ;  // 顯示成績之類
 - (void)saveScore:(NSString *)name: (int)score ;    // 記錄成績
 
 @property NSTimer *timer;
@@ -665,8 +665,9 @@ UIView *pauseView;
             button.frame = frame;
             //[button setTitle:[arrGame objectAtIndex:k] forState: UIControlStateNormal];
             //[button setTitle:@" " forState: UIControlStateNormal];
-            button.backgroundColor = [UIColor clearColor];
-            [button setBackgroundImage:[UIImage imageNamed:@"floor.png"] forState:UIControlStateNormal];
+            //button.backgroundColor = [UIColor clearColor];
+            //[button setBackgroundImage:[UIImage imageNamed:@"floor.png"] forState:UIControlStateNormal];
+            button.alpha = 0.7;
             button.tag = (j + 1) * 100 + (i + 1) * 10000 + [((NSNumber*)[arrGame objectAtIndex:k]) intValue];
             [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:button];
@@ -703,10 +704,10 @@ UIView *pauseView;
 }
 
 // 按鈕事件
-- (IBAction)buttonClicked:(id)sender
+- (IBAction)buttonClicked:(UIButton *)btn
 {
-    UIButton* btn = sender;
-    
+    [btn setAlpha:1.0]; // 無作用(?)
+    printf("%f", btn.alpha);
     btn.enabled = false;
     
     switch (btn.tag % 100)
@@ -894,7 +895,7 @@ UIView *pauseView;
         [self gameOver:1];
     }
     
-    if (goldCount == goldNum)
+    if (goldCount >= goldNum)
     {
         [self gameOver:2];
     }
