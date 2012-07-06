@@ -16,19 +16,24 @@
 
 #define MAXPRIME 50;  //定義MAXPRIME為最大的質數50
 int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，依據level改變難度
-
+UIView *pauseView;
 @interface GoldMiningPlayGame ()
 {
     Boolean isPause;
     int time_count;
 }
-- (void)setGame:(int)level ;    // 初始化
+- (void)setGame ;    // 初始化
 - (void)putTimer:(int)level ;   // 設定Timer
 - (void)putButton:(int)level ;  // 放按鈕
 - (IBAction)clickGamePause:(id)sender ; //按下暫停按鈕
 
 - (void)updateTimer:(NSTimer *)theTimer ;  // UpdateTimer
 - (IBAction) buttonClicked:(id)sender ;  // 踩踩樂
+
+- (void)putPauseView ; // 放置PauseView
+- (IBAction)backBtnPressed:(id)sender ;
+- (IBAction)levelBtnPressed:(id)sender ;
+- (IBAction)rePlayBtnPressed:(id)sender ;
 
 - (void)gameOver ;  // 顯示成績之類
 - (void)saveScore:(NSString *)name: (int)score ;    // 記錄成績
@@ -55,7 +60,7 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 
 - (void)viewDidLoad
 {
-    [self setGame:[levelSelect intValue]];  // 設定難度
+    [self setGame];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -76,10 +81,11 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)setGame:(int)level
+- (void)setGame
 {
-    [self putTimer:level];  // 放TImer
-    [self putButton:level]; // 放Button
+    [self putTimer:[levelSelect intValue]];  // 放TImer
+    [self putButton:[levelSelect intValue]]; // 放Button
+    [self putPauseView]; // 產生pauseView
 }
 
 - (void)putTimer:(int)level
@@ -758,46 +764,11 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
     
 }
 
-- (IBAction)clickGamePause:(id)sender//按下暫停按鈕
+- (IBAction)clickGamePause:(id)sender   //按下暫停按鈕
 {
     isPause = YES;
-    
-    // pauseView
-    CGRect pauseViewRect = CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
-    UIView * pauseView = [[UIView alloc] initWithFrame:pauseViewRect];
-    pauseView.backgroundColor = [UIColor redColor];
+    // 把 pauseView 叫出來
     [self.view addSubview:pauseView];
-
-
-    // backButton
-    CGRect backBtnRect = CGRectMake(pauseView.frame.size.width * 0.25 - 16, pauseView.frame.size.height / 2 - 16, 32, 32);
-    UIButton *backBtn = [[UIButton alloc] initWithFrame:backBtnRect];
-    [backBtn addTarget:self action:@selector(backBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.backgroundColor = [UIColor greenColor];
-
-    [pauseView addSubview:backBtn];
-
-    
-    // levelButton
-    CGRect levelBtnRect = CGRectMake(pauseView.frame.size.width * (2/4) - 16, pauseView.frame.size.height / 2 - 16, 32, 32);
-    UIButton *levelBtn = [[UIButton alloc] initWithFrame:levelBtnRect];
-    [levelBtn addTarget:self action:@selector(levelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    levelBtn.backgroundColor = [UIColor purpleColor];
-
-
-    [pauseView addSubview:levelBtn];
-    
-    
-    // rePlayBtn
-    CGRect rePlayBtnRect = CGRectMake(pauseView.frame.size.width * (3/4) - 16, pauseView.frame.size.height / 2 - 16, 32, 32);
-    UIButton *rePlayBtn = [[UIButton alloc] initWithFrame:rePlayBtnRect];
-    [rePlayBtn addTarget:self action:@selector(rePlayBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    rePlayBtn.backgroundColor = [UIColor blueColor];
-
-
-    [pauseView addSubview:rePlayBtn];
-    
-
     // addSubView 繼續 選難度 重來
     // 繼續 -> 清掉subview 計時器繼續
     // 選難度 -> 回到SelectLevel 並清掉此View所有產生的東西
@@ -819,7 +790,7 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 }
 
 // 按鈕事件
-- (IBAction) buttonClicked:(id)sender {
+- (IBAction)buttonClicked:(id)sender {
     UIButton* btn = sender;
     NSString* strA = @"你已經死了";
     NSString* strB = [NSString stringWithFormat:@"%@\n%d", strA, btn.tag];
@@ -940,21 +911,67 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
     //[[[UIAlertView alloc] initWithTitle:@"遊戲結束" message:strB delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil] show];        // GameOver Alert
 }
 
+- (void)putPauseView
+{
+    // pauseView
+    CGRect pauseViewRect = CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
+    pauseView = [[UIView alloc] initWithFrame:pauseViewRect];
+    pauseView.opaque = NO;
+    pauseView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    
+    
+    // backButton
+    CGRect backBtnRect = CGRectMake(pauseView.frame.size.width * 0.25 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
+    UIButton *backBtn = [[UIButton alloc] initWithFrame:backBtnRect];
+    [backBtn addTarget:self action:@selector(backBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.backgroundColor = [UIColor greenColor];
+    
+    [pauseView addSubview:backBtn];
+    
+    
+    // levelButton
+    CGRect levelBtnRect = CGRectMake(pauseView.frame.size.width * 0.5 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
+    UIButton *levelBtn = [[UIButton alloc] initWithFrame:levelBtnRect];
+    [levelBtn addTarget:self action:@selector(levelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    levelBtn.backgroundColor = [UIColor purpleColor];
+    
+    
+    [pauseView addSubview:levelBtn];
+    
+    
+    // rePlayBtn
+    CGRect rePlayBtnRect = CGRectMake(pauseView.frame.size.width * 0.75 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
+    UIButton *rePlayBtn = [[UIButton alloc] initWithFrame:rePlayBtnRect];
+    [rePlayBtn addTarget:self action:@selector(rePlayBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    rePlayBtn.backgroundColor = [UIColor blueColor];
+    
+    
+    [pauseView addSubview:rePlayBtn];
+}
+
 - (IBAction)backBtnPressed:(id)sender
 {
+    // remove pauseView
+    [pauseView removeFromSuperview];
+    
+    // continue Timer
     isPause = NO;
-   // self removeFromSuperView];
-    NSLog(@"back Pressed");
 }
 
 - (IBAction)levelBtnPressed:(id)sender
 {
-    NSLog(@"level pressed");
+    // 回到GoldMiningSelectLevel
+    
 }
 
-- (IBAction)rePlayBtnPressed:(id)sender
+- (IBAction)rePlayBtnPressed:(id)sender //待完成
 {
-    NSLog(@"replay Pressed");
+    // 清掉所有值
+    [self releaseGame];
+    // 初始化
+    [self setGame];
+    // 拿掉pauseView
+    [pauseView removeFromSuperview];
 }
 
 - (void)gameOver
@@ -973,6 +990,7 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 - (void)releaseGame
 {
     timer = nil;
+    // 清Button
 }
 
 @end
