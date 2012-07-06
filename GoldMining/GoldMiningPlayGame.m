@@ -36,7 +36,7 @@ UIView *pauseView;
     Boolean isPause;
     int time_count;
 }
-- (void)setGame ;    // 初始化
+- (void)setGame: (int) s setLevel: (int) l ;    // 初始化
 - (void)putTimer:(int)level ;   // 設定Timer
 - (void)putButton:(int)level ;  // 放按鈕
 - (IBAction)clickGamePause:(id)sender ; //按下暫停按鈕
@@ -74,7 +74,14 @@ UIView *pauseView;
 
 - (void)viewDidLoad
 {
-    [self setGame];
+    [self setGame: 0 setLevel: [levelSelect intValue]];
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+}
+
+- (void)viewDidLoad: (int) s setLevel: (int) l
+{
+    [self setGame: s setLevel: l];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -95,9 +102,9 @@ UIView *pauseView;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)setGame
+- (void)setGame: (int) s setLevel: (int) l
 {
-    [self initGame: 0 setLevel: [levelSelect intValue]]; // 改 setLevel 就可以玩了
+    [self initGame: 0 setLevel: l]; // 改 setLevel 就可以玩了
     [self putTimer:[levelSelect intValue]];  // 放TImer
     [self putButton:[levelSelect intValue]]; // 放Button
     [self putPauseView]; // 產生pauseView
@@ -218,7 +225,7 @@ UIView *pauseView;
     }
     
     //// 放置大便
-    for (int i = 0; i < [arrGold count]; i++)
+    for (int i = 0; i < [arrShit count]; i++)
     {
         int shitLoc = [((NSNumber*)[arrShit objectAtIndex:i]) intValue] - 1;
         [arrGame replaceObjectAtIndex:shitLoc withObject:@"51"];
@@ -953,9 +960,11 @@ UIView *pauseView;
     // 清掉所有值
     [self releaseGame];
     // 初始化
-    [self setGame];
+    //[self setGame];
     // 拿掉pauseView
     [pauseView removeFromSuperview];
+    
+    [self viewDidLoad: 0 setLevel: 1];
 }
 
 - (void)gameOver:(int)result
