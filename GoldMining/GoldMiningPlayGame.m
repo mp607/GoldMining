@@ -923,7 +923,7 @@ UIView *pauseView;
     CGRect backBtnRect = CGRectMake(pauseView.frame.size.width * 0.25 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
     UIButton *backBtn = [[UIButton alloc] initWithFrame:backBtnRect];
     [backBtn addTarget:self action:@selector(backBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    backBtn.backgroundColor = [UIColor greenColor];
+    [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [pauseView addSubview:backBtn];
     
     
