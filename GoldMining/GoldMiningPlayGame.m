@@ -97,7 +97,7 @@ UIView *pauseView;
 
 - (void)setGame
 {
-    [self initGame: 0 setLevel: 3]; // 改 setLevel 就可以玩了
+    [self initGame: 0 setLevel: [levelSelect intValue]]; // 改 setLevel 就可以玩了
     [self putTimer:[levelSelect intValue]];  // 放TImer
     [self putButton:[levelSelect intValue]]; // 放Button
     [self putPauseView]; // 產生pauseView
@@ -664,9 +664,9 @@ UIView *pauseView;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             button.frame = frame;
             //[button setTitle:[arrGame objectAtIndex:k] forState: UIControlStateNormal];
-            [button setTitle:@" " forState: UIControlStateNormal];
+            //[button setTitle:@" " forState: UIControlStateNormal];
             button.backgroundColor = [UIColor clearColor];
-            [button setImage:[UIImage imageNamed:@"floor.png"] forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage imageNamed:@"floor.png"] forState:UIControlStateNormal];
             button.tag = (j + 1) * 100 + (i + 1) * 10000 + [((NSNumber*)[arrGame objectAtIndex:k]) intValue];
             [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:button];
@@ -712,115 +712,115 @@ UIView *pauseView;
     switch (btn.tag % 100)
     {
         case 11:
-            [btn setImage:[UIImage imageNamed:@"f1.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g1.png"] forState:UIControlStateNormal];
             break;
             
         case 12:
-            [btn setImage:[UIImage imageNamed:@"f2.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g2.png"] forState:UIControlStateNormal];
             break;
             
         case 13:
-            [btn setImage:[UIImage imageNamed:@"f3.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g3.png"] forState:UIControlStateNormal];
             break;
             
         case 14:
-            [btn setImage:[UIImage imageNamed:@"f4.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g4.png"] forState:UIControlStateNormal];
             break;
             
         case 15:
-            [btn setImage:[UIImage imageNamed:@"f5.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g5.png"] forState:UIControlStateNormal];
             break;
             
         case 16:
-            [btn setImage:[UIImage imageNamed:@"f6.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g6.png"] forState:UIControlStateNormal];
             break;
             
         case 17:
-            [btn setImage:[UIImage imageNamed:@"f7.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g7.png"] forState:UIControlStateNormal];
             break;
             
         case 18:
-            [btn setImage:[UIImage imageNamed:@"f8.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g8.png"] forState:UIControlStateNormal];
             break;
             
         case 21:
-            [btn setImage:[UIImage imageNamed:@"r1.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"r1.png"] forState:UIControlStateNormal];
             break;
             
         case 22:
-            [btn setImage:[UIImage imageNamed:@"r2.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"r2.png"] forState:UIControlStateNormal];
             break;
             
         case 23:
-            [btn setImage:[UIImage imageNamed:@"r3.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"r3.png"] forState:UIControlStateNormal];
             break;
             
         case 24:
-            [btn setImage:[UIImage imageNamed:@"r4.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"r4.png"] forState:UIControlStateNormal];
             break;
             
         case 25:
-            [btn setImage:[UIImage imageNamed:@"r5.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"r5.png"] forState:UIControlStateNormal];
             break;
             
         case 26:
-            [btn setImage:[UIImage imageNamed:@"r6.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"r6.png"] forState:UIControlStateNormal];
             break;
             
         case 27:
-            [btn setImage:[UIImage imageNamed:@"r7.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"r7.png"] forState:UIControlStateNormal];
             break;
             
         case 28:
-            [btn setImage:[UIImage imageNamed:@"r8.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"r8.png"] forState:UIControlStateNormal];
             break;
             
         case 31:
-            [btn setImage:[UIImage imageNamed:@"b1.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b1.png"] forState:UIControlStateNormal];
             break;
             
         case 32:
-            [btn setImage:[UIImage imageNamed:@"b2.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b2.png"] forState:UIControlStateNormal];
             break;
             
         case 33:
-            [btn setImage:[UIImage imageNamed:@"b3.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b3.png"] forState:UIControlStateNormal];
             break;
             
         case 34:
-            [btn setImage:[UIImage imageNamed:@"b4.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b4.png"] forState:UIControlStateNormal];
             break;
             
         case 35:
-            [btn setImage:[UIImage imageNamed:@"b5.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b5.png"] forState:UIControlStateNormal];
             break;
             
         case 36:
-            [btn setImage:[UIImage imageNamed:@"b6.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b6.png"] forState:UIControlStateNormal];
             break;
             
         case 37:
-            [btn setImage:[UIImage imageNamed:@"b7.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b7.png"] forState:UIControlStateNormal];
             break;
             
         case 38:
-            [btn setImage:[UIImage imageNamed:@"b8.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b8.png"] forState:UIControlStateNormal];
             break;
             
         case 41:
-            [btn setImage:[UIImage imageNamed:@"g.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"g.png"] forState:UIControlStateNormal];
             score += goldScore;
             goldCount++;
             break;
             
         case 51:
-            [btn setImage:[UIImage imageNamed:@"b.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"b.png"] forState:UIControlStateNormal];
             score -= shitScore;
             die--;
             break;
             
         case 99:
-            [btn setImage:[UIImage imageNamed:@"hole.png"] forState:UIControlStateNormal];
+            [btn setBackgroundImage:[UIImage imageNamed:@"hole.png"] forState:UIControlStateNormal];
             int btnLocX = btn.tag / 10000 , btnLocY = btn.tag / 100 % 100;
             int btnLocK = (btnLocX - 1) * Col + btnLocY - 1;
             
@@ -901,8 +901,10 @@ UIView *pauseView;
         NSString* strB = [NSString stringWithFormat:@"%@\n得分：%d", strA, score];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"遊戲結束" message:strB delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil];
-        
+
         [alert show];
+        
+        [self gameOver];
     }
 }
 
