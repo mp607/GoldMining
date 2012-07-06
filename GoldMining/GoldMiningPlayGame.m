@@ -761,6 +761,43 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
 - (IBAction)clickGamePause:(id)sender//按下暫停按鈕
 {
     isPause = YES;
+    
+    // pauseView
+    CGRect pauseViewRect = CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
+    UIView * pauseView = [[UIView alloc] initWithFrame:pauseViewRect];
+    pauseView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:pauseView];
+
+
+    // backButton
+    CGRect backBtnRect = CGRectMake(pauseView.frame.size.width * 0.25 - 16, pauseView.frame.size.height / 2 - 16, 32, 32);
+    UIButton *backBtn = [[UIButton alloc] initWithFrame:backBtnRect];
+    [backBtn addTarget:self action:@selector(backBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.backgroundColor = [UIColor greenColor];
+
+    [pauseView addSubview:backBtn];
+
+    
+    // levelButton
+    CGRect levelBtnRect = CGRectMake(pauseView.frame.size.width * (2/4) - 16, pauseView.frame.size.height / 2 - 16, 32, 32);
+    UIButton *levelBtn = [[UIButton alloc] initWithFrame:levelBtnRect];
+    [levelBtn addTarget:self action:@selector(levelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    levelBtn.backgroundColor = [UIColor purpleColor];
+
+
+    [pauseView addSubview:levelBtn];
+    
+    
+    // rePlayBtn
+    CGRect rePlayBtnRect = CGRectMake(pauseView.frame.size.width * (3/4) - 16, pauseView.frame.size.height / 2 - 16, 32, 32);
+    UIButton *rePlayBtn = [[UIButton alloc] initWithFrame:rePlayBtnRect];
+    [rePlayBtn addTarget:self action:@selector(rePlayBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    rePlayBtn.backgroundColor = [UIColor blueColor];
+
+
+    [pauseView addSubview:rePlayBtn];
+    
+
     // addSubView 繼續 選難度 重來
     // 繼續 -> 清掉subview 計時器繼續
     // 選難度 -> 回到SelectLevel 並清掉此View所有產生的東西
@@ -901,6 +938,23 @@ int Row = 20, Col = 15, btnSize = 20, goldNum = 30, shitNum = 30;   // 暫存，
             break;
     }
     //[[[UIAlertView alloc] initWithTitle:@"遊戲結束" message:strB delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil] show];        // GameOver Alert
+}
+
+- (IBAction)backBtnPressed:(id)sender
+{
+    isPause = NO;
+   // self removeFromSuperView];
+    NSLog(@"back Pressed");
+}
+
+- (IBAction)levelBtnPressed:(id)sender
+{
+    NSLog(@"level pressed");
+}
+
+- (IBAction)rePlayBtnPressed:(id)sender
+{
+    NSLog(@"replay Pressed");
 }
 
 - (void)gameOver
