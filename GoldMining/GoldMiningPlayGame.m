@@ -116,6 +116,8 @@ UIView *pauseView;
     score = s;
     level = l;
     
+    goldCount = 0;
+    
     Row = level * 4;
     Col = level * 3;
     btnSize =  360 / Row;
@@ -958,7 +960,8 @@ UIView *pauseView;
 - (IBAction)rePlayBtnPressed:(id)sender //待完成
 {
     // 清掉所有值
-    [self releaseGame];
+    //[self releaseGame];
+    [timer invalidate];
     // 初始化
     //[self setGame];
     // 拿掉pauseView
