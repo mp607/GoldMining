@@ -919,13 +919,11 @@ UIView *pauseView;
     pauseView.opaque = NO;
     pauseView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     
-    
     // backButton
     CGRect backBtnRect = CGRectMake(pauseView.frame.size.width * 0.25 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
     UIButton *backBtn = [[UIButton alloc] initWithFrame:backBtnRect];
     [backBtn addTarget:self action:@selector(backBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     backBtn.backgroundColor = [UIColor greenColor];
-    
     [pauseView addSubview:backBtn];
     
     
@@ -934,19 +932,15 @@ UIView *pauseView;
     UIButton *levelBtn = [[UIButton alloc] initWithFrame:levelBtnRect];
     [levelBtn addTarget:self action:@selector(levelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     levelBtn.backgroundColor = [UIColor purpleColor];
-    
-    
     [pauseView addSubview:levelBtn];
-    
     
     // rePlayBtn
     CGRect rePlayBtnRect = CGRectMake(pauseView.frame.size.width * 0.75 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
     UIButton *rePlayBtn = [[UIButton alloc] initWithFrame:rePlayBtnRect];
     [rePlayBtn addTarget:self action:@selector(rePlayBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     rePlayBtn.backgroundColor = [UIColor blueColor];
-    
-    
     [pauseView addSubview:rePlayBtn];
+    
 }
 
 - (IBAction)backBtnPressed:(id)sender
