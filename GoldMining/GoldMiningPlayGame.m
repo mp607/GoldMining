@@ -17,7 +17,7 @@
 #define MAXPRIME 50;  //定義MAXPRIME為最大的質數50
 #define dieNum 5;      // 踩到幾個大便遊戲結束
 #define goldScore 10; // 黃金得分
-#define shitScore 20; // 大便扣分
+#define shitScore 10; // 大便扣分
 
 int Row = 12,       // 列數
 Col = 9,       // 行數
@@ -692,7 +692,7 @@ UIView *pauseView;
 	//static int count = 120;
     if(time_count == 0) {
         // Game Over
-        [self gameOver];
+        [self gameOver:-1];
     } else if(!isPause){    // isPause == NO -> run
         time_count--;
         NSString *s = [[NSString alloc]
@@ -890,21 +890,13 @@ UIView *pauseView;
     //self.lblScore.text = [NSString stringWithFormat:@"第%d關 %d / %d   得分：%d   剩餘生命：%d", level, goldCount, goldNum, score, die];
     
     if (die <= 0)
+    { 
+        [self gameOver:1];
+    }
+    
+    if (goldCount == goldNum)
     {
-        for (int i = 0; i < [buttonMapping count]; i++)
-        {
-            UIButton *b = [buttonMapping objectAtIndex:i];
-            b.enabled = false;
-        }
-        
-        NSString* strA = @"你已經死了";
-        NSString* strB = [NSString stringWithFormat:@"%@\n得分：%d", strA, score];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"遊戲結束" message:strB delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil];
-
-        [alert show];
-        
-        [self gameOver];
+        [self gameOver:2];
     }
 }
 
@@ -965,9 +957,32 @@ UIView *pauseView;
     [pauseView removeFromSuperview];
 }
 
-- (void)gameOver
+- (void)gameOver:(int)result
 {
     [timer invalidate]; // 用不到了，清掉Timer
+    NSString* strA;
+    if (result == 1)
+    {
+        strA = @"你已經死了";
+    }else if (result == 2)
+    {
+        strA = @"你贏了";
+    }
+    else
+    {
+        strA = @"時間到";
+    }
+    
+    for (int i = 0; i < [buttonMapping count]; i++)
+    {
+        UIButton *b = [buttonMapping objectAtIndex:i];
+        b.enabled = false;
+    }
+    NSString* strB = [NSString stringWithFormat:@"%@\n得分：%d", strA, score];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"遊戲結束" message:strB delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil];
+    
+    [alert show];
     // 顯示成績 儲存成績之類
     // addSubView (?) 打星星
     // 主畫面 選難度 下一難度
