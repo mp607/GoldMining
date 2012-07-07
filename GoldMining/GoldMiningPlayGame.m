@@ -36,21 +36,21 @@ UIView *pauseView;
     Boolean isPause;
     int time_count;
 }
-- (void)setGame: (int) s setLevel: (int) l ;    // 初始化
-- (void)putTimer:(int)level ;   // 設定Timer
-- (void)putButton:(int)level ;  // 放按鈕
+- (void)setGame ;    // 初始化
+- (void)putTimer ;   // 設定Timer
+- (void)putButton ;  // 放按鈕
 - (IBAction)clickGamePause:(id)sender ; //按下暫停按鈕
 
 - (void)updateTimer:(NSTimer *)theTimer ;  // UpdateTimer
 - (IBAction) buttonClicked:(id)sender ;  // 踩踩樂
 
-- (void)putPauseView ; // 放置PauseView
+- (void)putPauseView ;  // 放置PauseView
 - (IBAction)backBtnPressed:(id)sender ;
 - (IBAction)levelBtnPressed:(id)sender ;
 - (IBAction)rePlayBtnPressed:(id)sender ;
 
 - (void)gameOver:(int)result ;  // 顯示成績之類
-- (void)saveScore:(NSString *)name: (int)score ;    // 記錄成績
+- (void)saveScore:(NSString *)name ;    // 記錄成績
 
 @property NSTimer *timer;
 
@@ -60,7 +60,6 @@ UIView *pauseView;
 @synthesize lblA;
 @synthesize lblB;
 @synthesize timerLabel;
-@synthesize levelSelect;
 @synthesize timer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -74,18 +73,19 @@ UIView *pauseView;
 
 - (void)viewDidLoad
 {
-    [self setGame: 0 setLevel: [levelSelect intValue]];
+    [self setGame];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
 
+/*
 - (void)viewDidLoad: (int) s setLevel: (int) l
 {
-    [self setGame: s setLevel: l];
+    [self setGame:l];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
-
+*/
 - (void)viewDidUnload
 {
     [self releaseGame];
@@ -102,19 +102,11 @@ UIView *pauseView;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)setGame: (int) s setLevel: (int) l
-{
-    [self initGame: 0 setLevel: l]; // 改 setLevel 就可以玩了
-    [self putTimer:[levelSelect intValue]];  // 放TImer
-    [self putButton:[levelSelect intValue]]; // 放Button
-    [self putPauseView]; // 產生pauseView
-}
-
-- (void)initGame: (int) s setLevel: (int) l
+- (void)setGame
 {
     die = dieNum;
-    score = s;
-    level = l;
+    //score = s;
+    //level = l;
     
     goldCount = 0;
     
@@ -124,9 +116,17 @@ UIView *pauseView;
     goldNum = (Row - Col) * 2 * level;
     shitNum = (Row - Col) * 2 * level;
     //self.lblScore.text = [NSString stringWithFormat:@"第%d關 %d / %d   得分：%d   剩餘生命：%d", level, goldCount, goldNum, score, die];
+    [self putTimer];  // 放TImer
+    [self putButton]; // 放Button
+    [self putPauseView]; // 產生pauseView
 }
+/*
+- (void)initGame:(int) l
+{
 
-- (void)putTimer:(int)level
+}
+*/
+- (void)putTimer
 {
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
     isPause = NO;
@@ -145,7 +145,7 @@ UIView *pauseView;
     self.timerLabel.text = [[NSString alloc] initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
 }
 
-- (void)putButton:(int)level
+- (void)putButton
 {
     //http://vectus.wordpress.com/2012/01/07/objective-c-nsmutablearray-使用方法/
     
@@ -965,7 +965,8 @@ UIView *pauseView;
     [pauseView removeFromSuperview];
     
     // 重新初始化
-    [self viewDidLoad: 0 setLevel: 1];
+    level = 1;
+    [self setGame];   // 回第一關
 }
 
 - (void)gameOver:(int)result
@@ -989,17 +990,31 @@ UIView *pauseView;
         UIButton *b = [buttonMapping objectAtIndex:i];
         b.enabled = false;
     }
-    NSString* strB = [NSString stringWithFormat:@"%@\n得分：%d", strA, score];
+    NSString* strB = [NSString stringWithFormat:@"%@\n累計得分：%d", strA, score];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"遊戲結束" message:strB delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil];
     
     [alert show];
+    
+    if (result == 2 && level <3) {  // Win this level
+        [self releaseGame];
+        level++;
+        [self setGame];
+    }else if (level >= 3) {
+        [self allOver];
+    }
     // 顯示成績 儲存成績之類
     // addSubView (?) 打星星
     // 主畫面 選難度 下一難度
 }
 
-- (void)saveScore:(NSString *)name: (int)score
+- (void)allOver
+{
+    // 三關結束後做的事：要使用者輸入姓名 記錄成績
+    NSLog(@"Ya!");
+}
+
+- (void)saveScore:(NSString *)name
 {
     // 成績扔到SQLite
 }
