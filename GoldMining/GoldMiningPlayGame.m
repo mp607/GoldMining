@@ -14,20 +14,20 @@
 #import <Foundation/NSAutoreleasePool.h>
 #import <Foundation/NSValue.h>
 
-#define MAXPRIME 50;  //定義MAXPRIME為最大的質數50
-#define dieNum 5;      // 踩到幾個大便遊戲結束
-#define goldScore 10; // 黃金得分
-#define shitScore 10; // 大便扣分
+#define MAXPRIME 50;	// 定義MAXPRIME為最大的質數50
+#define dieNum 5;		// 踩到幾個大便遊戲結束
+#define goldScore 10;	// 黃金得分
+#define shitScore 10;	// 大便扣分
 
-int Row = 12,       // 列數
-Col = 9,       // 行數
-btnSize = 33,   // 按鈕大小
-goldNum = 10,   // 黃金數量
-shitNum = 20,   // 大便數量
-die = 0,        // 死了幾次
-level = 1,      // 第幾關
-score = 0,      // 累積分數
-goldCount = 0;  // 挖到黃金數
+int Row = 12,	// 列數
+Col = 9,		// 行數
+btnSize = 33,	// 按鈕大小
+goldNum = 10,	// 黃金數量
+shitNum = 20,	// 大便數量
+die = 0,		// 死了幾次
+level = 1,		// 第幾關
+score = 0,		// 累積分數
+goldCount = 0;	// 挖到黃金數
 
 NSMutableArray *buttonMapping;
 UIView *pauseView;
