@@ -753,67 +753,67 @@ UIView *pauseView;
             break;
             
         case 21:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r1.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 22:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r2.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 23:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r3.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 24:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r4.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 25:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r5.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 26:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r6.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 27:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r7.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 28:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r8.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 31:
             [btn setBackgroundImage:[UIImage imageNamed:@"b1.png"] forState:UIControlStateNormal];
             break;
             
-        case 32:
+        case 22:
             [btn setBackgroundImage:[UIImage imageNamed:@"b2.png"] forState:UIControlStateNormal];
             break;
             
-        case 33:
+        case 23:
             [btn setBackgroundImage:[UIImage imageNamed:@"b3.png"] forState:UIControlStateNormal];
             break;
             
-        case 34:
+        case 24:
             [btn setBackgroundImage:[UIImage imageNamed:@"b4.png"] forState:UIControlStateNormal];
             break;
             
-        case 35:
+        case 25:
             [btn setBackgroundImage:[UIImage imageNamed:@"b5.png"] forState:UIControlStateNormal];
             break;
             
-        case 36:
+        case 26:
             [btn setBackgroundImage:[UIImage imageNamed:@"b6.png"] forState:UIControlStateNormal];
             break;
             
-        case 37:
+        case 27:
             [btn setBackgroundImage:[UIImage imageNamed:@"b7.png"] forState:UIControlStateNormal];
             break;
             
-        case 38:
+        case 28:
             [btn setBackgroundImage:[UIImage imageNamed:@"b8.png"] forState:UIControlStateNormal];
+            break;
+            
+        case 31:
+            [btn setBackgroundImage:[UIImage imageNamed:@"r1.png"] forState:UIControlStateNormal];
+            break;
+            
+        case 32:
+            [btn setBackgroundImage:[UIImage imageNamed:@"r2.png"] forState:UIControlStateNormal];
+            break;
+            
+        case 33:
+            [btn setBackgroundImage:[UIImage imageNamed:@"r3.png"] forState:UIControlStateNormal];
+            break;
+            
+        case 34:
+            [btn setBackgroundImage:[UIImage imageNamed:@"r4.png"] forState:UIControlStateNormal];
+            break;
+            
+        case 35:
+            [btn setBackgroundImage:[UIImage imageNamed:@"r5.png"] forState:UIControlStateNormal];
+            break;
+            
+        case 36:
+            [btn setBackgroundImage:[UIImage imageNamed:@"r6.png"] forState:UIControlStateNormal];
+            break;
+            
+        case 37:
+            [btn setBackgroundImage:[UIImage imageNamed:@"r7.png"] forState:UIControlStateNormal];
+            break;
+            
+        case 38:
+            [btn setBackgroundImage:[UIImage imageNamed:@"r8.png"] forState:UIControlStateNormal];
             break;
             
         case 41:
