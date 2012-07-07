@@ -50,6 +50,7 @@ UIView *pauseView;
 - (IBAction)rePlayBtnPressed:(id)sender ;
 
 - (void)gameOver:(int)result ;  // 顯示成績之類
+- (void)allOver ;   // 三關結束後做的事
 - (void)saveScore:(NSString *)name ;    // 記錄成績
 
 @property NSTimer *timer;
