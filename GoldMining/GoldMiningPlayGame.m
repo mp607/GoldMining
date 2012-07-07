@@ -716,7 +716,6 @@ UIView *pauseView;
 - (IBAction)buttonClicked:(UIButton *)btn
 {
     [btn setAlpha:1.0]; // 無作用(?)
-    printf("%f", btn.alpha);
     btn.enabled = false;
     
     switch (btn.tag % 100)
@@ -960,13 +959,12 @@ UIView *pauseView;
 - (IBAction)rePlayBtnPressed:(id)sender //待完成
 {
     // 清掉所有值
-    //[self releaseGame];
-    [timer invalidate];
-    // 初始化
-    //[self setGame];
+    [self releaseGame];
+
     // 拿掉pauseView
     [pauseView removeFromSuperview];
     
+    // 重新初始化
     [self viewDidLoad: 0 setLevel: 1];
 }
 
@@ -1008,8 +1006,14 @@ UIView *pauseView;
 
 - (void)releaseGame
 {
-    timer = nil;
+    //timer = nil;
     // 清Button
+    [timer invalidate];
+    
+    // 清掉Button
+    for (int i = 0; i< [buttonMapping count]; i++) {
+        [[buttonMapping objectAtIndex:i] removeFromSuperview];
+    }
 }
 
 @end
