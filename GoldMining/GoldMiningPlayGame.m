@@ -1039,8 +1039,6 @@ UIButton *rePlayBtn;
 	
 	// scoreLabel
 	CGRect scoreLabelRect = CGRectMake(msgLabel.frame.origin.x, msgLabel.frame.origin.y + msgLabel.bounds.size.height, msgLabel.bounds.size.width, msgLabel.bounds.size.height);
-	printf("%f\n", msgLabel.bounds.origin.y);
-	printf("%f", msgLabel.bounds.size.height);
 	UILabel *scoreLabel = [[UILabel alloc] initWithFrame:scoreLabelRect];
 	scoreLabel.backgroundColor = msgLabel.backgroundColor;
 	[scoreLabel setFont:[UIFont systemFontOfSize:20]];
