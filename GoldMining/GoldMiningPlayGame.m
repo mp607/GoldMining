@@ -35,6 +35,7 @@ UIView *gameOverView;
 UILabel *msgLabel;		// 遊戲結果用
 UILabel *scoreLabel;	// 顯示分數
 UIButton *rePlayBtn;
+UIButton *nextLevelBtn;	// 下一關
 
 @interface GoldMiningPlayGame ()
 {
@@ -1005,10 +1006,9 @@ UIButton *rePlayBtn;
 	
 	 // nextLevelButton
     CGRect nextLevelBtnRect = CGRectMake(gameOverView.bounds.size.width * 0.75 - 24, gameOverView.bounds.size.height * 0.75 - 24, 48, 48);
-    UIButton *nextLevelBtn = [[UIButton alloc] initWithFrame:nextLevelBtnRect];
+    nextLevelBtn = [[UIButton alloc] initWithFrame:nextLevelBtnRect];
 	[nextLevelBtn setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
 	[nextLevelBtn addTarget:self action:@selector(nextLevelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [gameOverView addSubview:nextLevelBtn];
 }
 
 - (IBAction)backBtnPressed:(id)sender
@@ -1042,7 +1042,17 @@ UIButton *rePlayBtn;
 
 - (IBAction)nextLevelBtnPressed:(id)sender
 {
-	// go to next level
+	// 清掉所有東西
+	[self releaseGame];
+	
+	// 下一關
+	level++;
+	
+	// 拿掉gameOverView
+	[gameOverView removeFromSuperview];
+	
+	// 重新配置
+	[self setGame];
 }
 
 - (IBAction)homeBtnPressed:(id)sender
@@ -1071,7 +1081,7 @@ UIButton *rePlayBtn;
     for (int i = 0; i < [buttonMapping count]; i++)
     {
         UIButton *b = [buttonMapping objectAtIndex:i];
-        b.enabled = false;
+        b.enabled = NO;
     }
     NSString* strB = [NSString stringWithFormat:@"%@\n累計得分：%d", strA, score];
     
@@ -1082,18 +1092,20 @@ UIButton *rePlayBtn;
 	// if (replaybtn) rePlayBtnPressed
 	// if (nextLvbtn) releaseGame; setGame;
 	
-    if (result == 2 && level <3) {  // Win this level
-        [self releaseGame];
-        level++;
-        [self setGame];
-    }else if (level >= 3) {
-        [self allOver];
-    }
+	if (result != 2 || level >= 3)	// allOver
+	{
+		[nextLevelBtn removeFromSuperview];	// 沒有下一關了
+		[self allOver];
+	}
+	else
+	{
+		[gameOverView addSubview:nextLevelBtn];
+	}
 	
 	// 放置gameOverView
 	[scoreLabel setText:[[NSString alloc] initWithFormat:@"累計得分：%d", score]];
 	[self.view addSubview:gameOverView];
-	
+		
     // 顯示成績 儲存成績之類
     // addSubView (?) 打星星
     // 主畫面 選難度 下一難度
