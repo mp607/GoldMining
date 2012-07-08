@@ -32,6 +32,8 @@ goldCount = 0;	// 挖到黃金數
 NSMutableArray *buttonMapping;
 UIView *pauseView;
 UIView *gameOverView;
+UILabel *msgLabel;		// 遊戲結果用
+UILabel *scoreLabel;	// 顯示分數
 UIButton *rePlayBtn;
 
 @interface GoldMiningPlayGame ()
@@ -47,7 +49,7 @@ UIButton *rePlayBtn;
 - (void)updateTimer:(NSTimer *)theTimer ;  // UpdateTimer
 - (IBAction) buttonClicked:(id)sender ;  // 踩踩樂
 
-- (void)putPauseView ;  // 放置PauseView
+- (void)putSubView ;  // 放置passView gameOverView
 - (IBAction)backBtnPressed:(id)sender ;
 - (IBAction)levelBtnPressed:(id)sender ;
 - (IBAction)rePlayBtnPressed:(id)sender ;
@@ -78,6 +80,7 @@ UIButton *rePlayBtn;
 - (void)viewDidLoad
 {
     [self setGame];
+	[self putSubView];	// 開始的時候只做一次
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -97,6 +100,8 @@ UIButton *rePlayBtn;
     // 記得清掉所有產生的button
     [self setLblA:nil];
     [self setLblB:nil];
+	pauseView = nil;
+	gameOverView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -122,7 +127,6 @@ UIButton *rePlayBtn;
     //self.lblScore.text = [NSString stringWithFormat:@"第%d關 %d / %d   得分：%d   剩餘生命：%d", level, goldCount, goldNum, score, die];
     [self putTimer];  // 放TImer
     [self putButton]; // 放Button
-    [self putPauseView]; // 產生pauseView
 }
 /*
 - (void)initGame:(int) l
@@ -913,7 +917,7 @@ UIButton *rePlayBtn;
     }
 }
 
-- (void)putPauseView
+- (void)putSubView
 {
     // pauseView
     CGRect pauseViewRect = CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
@@ -942,7 +946,69 @@ UIButton *rePlayBtn;
     [rePlayBtn addTarget:self action:@selector(rePlayBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
     rePlayBtn.backgroundColor = [UIColor blueColor];
     [pauseView addSubview:rePlayBtn];
+	
+	
+	// gameOverView
+    CGRect gameOverRect = CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
+    gameOverView = [[UIView alloc] initWithFrame:gameOverRect];
+    gameOverView.opaque = NO;
+    gameOverView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     
+	// gameOverMsgView
+    CGRect gameOverMsgRect = CGRectMake(gameOverView.bounds.size.width / 4, gameOverView.bounds.size.height /4, gameOverView.bounds.size.width / 2 , gameOverView.bounds.size.height / 2);
+    UIView *gameOverMsgView = [[UIView alloc] initWithFrame:gameOverMsgRect];
+    gameOverMsgView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0 alpha:0.7];
+	[gameOverView addSubview:gameOverMsgView];
+	
+	// titleLabel
+	CGRect titleLabelRect = CGRectMake(gameOverMsgView.bounds.origin.x, gameOverView.bounds.origin.y, gameOverMsgView.bounds.size.width, 30);
+	UILabel *titleLabel = [[UILabel alloc] initWithFrame:titleLabelRect];
+	titleLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+	[titleLabel setFont:[UIFont systemFontOfSize:20]];
+	titleLabel.textAlignment = UITextAlignmentCenter;
+	titleLabel.text = @"Game Over";
+	[gameOverMsgView addSubview:titleLabel];
+	
+	// msgLabel
+	CGRect msgLabelRect = CGRectMake(titleLabel.bounds.origin.x, titleLabel.bounds.origin.y + titleLabel.bounds.size.height + 5, titleLabel.bounds.size.width, 30);
+	msgLabel = [[UILabel alloc] initWithFrame:msgLabelRect];
+	msgLabel.backgroundColor = titleLabel.backgroundColor;
+	/* 換行用
+	 msgLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+	 msgLabel.numberOfLines = 2;
+	 */
+	[msgLabel setFont:[UIFont systemFontOfSize:30]];
+	msgLabel.textAlignment = UITextAlignmentCenter;
+	[gameOverMsgView addSubview:msgLabel];
+	
+	// scoreLabel
+	CGRect scoreLabelRect = CGRectMake(msgLabel.frame.origin.x, msgLabel.frame.origin.y + msgLabel.bounds.size.height, msgLabel.bounds.size.width, msgLabel.bounds.size.height);
+	scoreLabel = [[UILabel alloc] initWithFrame:scoreLabelRect];
+	scoreLabel.backgroundColor = msgLabel.backgroundColor;
+	[scoreLabel setFont:[UIFont systemFontOfSize:20]];
+	scoreLabel.textAlignment = UITextAlignmentCenter;
+	[gameOverMsgView addSubview:scoreLabel];
+	
+	// gameOverRePlayBtn
+    CGRect gameOverRePlayBtnRect = CGRectMake(gameOverView.bounds.size.width * 0.25 - 24, gameOverView.bounds.size.height * 0.75 - 24, 48, 48);
+    UIButton *gameOverRePlayBtn = [[UIButton alloc] initWithFrame:gameOverRePlayBtnRect];
+	[gameOverRePlayBtn setImage:[UIImage imageNamed:@"replay.png"] forState:UIControlStateNormal];
+	[gameOverRePlayBtn addTarget:self action:@selector(rePlayBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [gameOverView addSubview:gameOverRePlayBtn];
+	
+	// gameOverHomeBtn
+	CGRect gameOverHomeBtnRect = CGRectMake(gameOverView.bounds.size.width * 0.5 - 24, gameOverView.bounds.size.height * 0.75 - 24, 48, 48);
+    UIButton *gameOverHomeBtn = [[UIButton alloc] initWithFrame:gameOverHomeBtnRect];
+	[gameOverHomeBtn setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+	[gameOverHomeBtn addTarget:self action:@selector(homeBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [gameOverView addSubview:gameOverHomeBtn];
+	
+	 // nextLevelButton
+    CGRect nextLevelBtnRect = CGRectMake(gameOverView.bounds.size.width * 0.75 - 24, gameOverView.bounds.size.height * 0.75 - 24, 48, 48);
+    UIButton *nextLevelBtn = [[UIButton alloc] initWithFrame:nextLevelBtnRect];
+	[nextLevelBtn setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
+	[nextLevelBtn addTarget:self action:@selector(nextLevelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [gameOverView addSubview:nextLevelBtn];
 }
 
 - (IBAction)backBtnPressed:(id)sender
@@ -974,20 +1040,31 @@ UIButton *rePlayBtn;
     [self setGame];   // 回第一關
 }
 
+- (IBAction)nextLevelBtnPressed:(id)sender
+{
+	// go to next level
+}
+
+- (IBAction)homeBtnPressed:(id)sender
+{
+	// bake to Home
+}
+
 - (void)gameOver:(int)result
 {
     [timer invalidate]; // 用不到了，清掉Timer
-    NSString* strA;
+
     if (result == 1)
     {
-        strA = @"你已經死了";
-    }else if (result == 2)
+        msgLabel.text = @"你已經死了";
+    }
+	else if (result == 2)
     {
-        strA = @"你贏了";
+        msgLabel.text = @"你贏了";
     }
     else
     {
-        strA = @"時間到";
+        msgLabel.text = @"時間到";
     }
 	
     /*
@@ -1002,60 +1079,6 @@ UIButton *rePlayBtn;
     
     [alert show];
 	*/
-	
-	// gameOverView
-    CGRect gameOverRect = CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
-    gameOverView = [[UIView alloc] initWithFrame:gameOverRect];
-    gameOverView.opaque = NO;
-    gameOverView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-    
-	// gameOverMsgView
-    CGRect gameOverMsgRect = CGRectMake(gameOverView.bounds.size.width / 4, gameOverView.bounds.size.height /4, gameOverView.bounds.size.width / 2 , gameOverView.bounds.size.height / 2);
-    UIView *gameOverMsgView = [[UIView alloc] initWithFrame:gameOverMsgRect];
-    gameOverMsgView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0 alpha:0.7];
-	[gameOverView addSubview:gameOverMsgView];
-	
-	// titleLabel
-	CGRect titleLabelRect = CGRectMake(gameOverMsgView.bounds.origin.x, gameOverView.bounds.origin.y, gameOverMsgView.bounds.size.width, 30); // 不知道為什麼怪怪的
-	UILabel *titleLabel = [[UILabel alloc] initWithFrame:titleLabelRect];
-	titleLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
-	[titleLabel setFont:[UIFont systemFontOfSize:20]];
-	titleLabel.textAlignment = UITextAlignmentCenter;
-	titleLabel.text = @"Game Over";
-	[gameOverMsgView addSubview:titleLabel];
-	
-	// msgLabel
-	CGRect msgLabelRect = CGRectMake(titleLabel.bounds.origin.x, titleLabel.bounds.origin.y + titleLabel.bounds.size.height + 5, titleLabel.bounds.size.width, 30);
-	UILabel *msgLabel = [[UILabel alloc] initWithFrame:msgLabelRect];
-	msgLabel.backgroundColor = titleLabel.backgroundColor;
-	/* 換行用
-	msgLabel.lineBreakMode = UILineBreakModeCharacterWrap;
-	msgLabel.numberOfLines = 2;
-	*/
-	[msgLabel setFont:[UIFont systemFontOfSize:30]];
-	msgLabel.textAlignment = UITextAlignmentCenter;
-	[msgLabel setText:strA];	// result
-	[gameOverMsgView addSubview:msgLabel];
-	
-	// scoreLabel
-	CGRect scoreLabelRect = CGRectMake(msgLabel.frame.origin.x, msgLabel.frame.origin.y + msgLabel.bounds.size.height, msgLabel.bounds.size.width, msgLabel.bounds.size.height);
-	UILabel *scoreLabel = [[UILabel alloc] initWithFrame:scoreLabelRect];
-	scoreLabel.backgroundColor = msgLabel.backgroundColor;
-	[scoreLabel setFont:[UIFont systemFontOfSize:20]];
-	scoreLabel.textAlignment = UITextAlignmentCenter;
-	[scoreLabel setText:[[NSString alloc] initWithFormat:@"累計得分：%d", score]];
-	[gameOverMsgView addSubview:scoreLabel];
-	
-	/*
-    // backButton
-    CGRect backBtnRect = CGRectMake(game.frame.size.width * 0.25 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
-    UIButton *backBtn = [[UIButton alloc] initWithFrame:backBtnRect];
-    [backBtn addTarget:self action:@selector(backBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [pauseView addSubview:backBtn];
-	*/
-	[self.view addSubview:gameOverView];
-    
 	// if (replaybtn) rePlayBtnPressed
 	// if (nextLvbtn) releaseGame; setGame;
 	
@@ -1068,6 +1091,7 @@ UIButton *rePlayBtn;
     }
 	
 	// 放置gameOverView
+	[scoreLabel setText:[[NSString alloc] initWithFormat:@"累計得分：%d", score]];
 	[self.view addSubview:gameOverView];
 	
     // 顯示成績 儲存成績之類
