@@ -72,6 +72,7 @@
 		4DF2957615A3D8AB00BB6199 /* r6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2955515A3D8AB00BB6199 /* r6.png */; };
 		4DF2957715A3D8AB00BB6199 /* r7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2955615A3D8AB00BB6199 /* r7.png */; };
 		4DF2957815A3D8AB00BB6199 /* r8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2955715A3D8AB00BB6199 /* r8.png */; };
+		887B5A9615AAA9ED003D3C71 /* GoldMiningScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 887B5A9515AAA9ED003D3C71 /* GoldMiningScoreView.m */; };
 		88BF281315AAA32100458DDD /* gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BF281215AAA32100458DDD /* gold.png */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +159,8 @@
 		4DF2955515A3D8AB00BB6199 /* r6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = r6.png; sourceTree = "<group>"; };
 		4DF2955615A3D8AB00BB6199 /* r7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = r7.png; sourceTree = "<group>"; };
 		4DF2955715A3D8AB00BB6199 /* r8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = r8.png; sourceTree = "<group>"; };
+		887B5A9415AAA9ED003D3C71 /* GoldMiningScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldMiningScoreView.h; sourceTree = "<group>"; };
+		887B5A9515AAA9ED003D3C71 /* GoldMiningScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldMiningScoreView.m; sourceTree = "<group>"; };
 		88BF281215AAA32100458DDD /* gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gold.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +241,8 @@
 				4DCE559115A2E1D70099B114 /* GoldMiningAppDelegate.h */,
 				4DCE559215A2E1D70099B114 /* GoldMiningAppDelegate.m */,
 				4DCE559415A2E1D70099B114 /* MainStoryboard.storyboard */,
+				887B5A9415AAA9ED003D3C71 /* GoldMiningScoreView.h */,
+				887B5A9515AAA9ED003D3C71 /* GoldMiningScoreView.m */,
 				4D26F9F215A40F5000712D88 /* GoldMiningPlayGame.h */,
 				4D26F9F315A40F5000712D88 /* GoldMiningPlayGame.m */,
 				4DCE559715A2E1D70099B114 /* GoldMiningViewController.h */,
@@ -523,6 +528,7 @@
 				4DCE559315A2E1D70099B114 /* GoldMiningAppDelegate.m in Sources */,
 				4DCE559915A2E1D70099B114 /* GoldMiningViewController.m in Sources */,
 				4D26F9F415A40F5000712D88 /* GoldMiningPlayGame.m in Sources */,
+				887B5A9615AAA9ED003D3C71 /* GoldMiningScoreView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

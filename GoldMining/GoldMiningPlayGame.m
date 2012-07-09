@@ -1141,12 +1141,12 @@ NSString *name = @"";
 
 - (IBAction)saveScore:(id)sender
 {
-    NSString *Score_user_name;
-    NSInteger Score_num = 0;
+
     // 成績扔到SQLite
 	// 考慮10筆存plist，key -> 成績 value -> name 取出時先對key排序再一一列出
-    name = [name isEqualToString:@""] ? @"無名氏" : @"";
-
+    //name = [name isEqualToString:@""] ? @"無名氏" : [[NSString alloc] in]
+    name = nameText.text;
+    if ([name isEqualToString:@""]) name = @"無名氏";
 	// 參考 http://furnacedigital.blogspot.tw/2012/03/document.html#more
     dataSource = [[NSMutableArray alloc] init];
     
