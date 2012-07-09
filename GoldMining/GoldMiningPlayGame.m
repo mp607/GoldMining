@@ -949,7 +949,7 @@ NSString *name = @"";
     CGRect rePlayBtnRect = CGRectMake(pauseView.frame.size.width * 0.75 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
     rePlayBtn = [[UIButton alloc] initWithFrame:rePlayBtnRect];
     [rePlayBtn addTarget:self action:@selector(rePlayBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    rePlayBtn.backgroundColor = [UIColor blueColor];
+	[rePlayBtn setImage:[UIImage imageNamed:@"replay.png"] forState:UIControlStateNormal];
     [pauseView addSubview:rePlayBtn];
 	
 	
