@@ -1166,24 +1166,55 @@ NSString *name = @"";
     
      if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath] ) {
         NSMutableArray *data = [[NSArray alloc]initWithContentsOfFile:plistPath];
-         NSMutableArray *data2;
-         data2 = data;
-         NSLog(@"%@",[NSString stringWithFormat:@"%d",data.count]);
-         [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@,%d",name,data.count]]];
-         NSLog(@"%@",[NSString stringWithFormat:@"%d",data.count]);
-         [data2 writeToFile:plistPath atomically:YES];
-         [dataSource addObjectsFromArray:data2];
+        NSMutableArray *data2 = [NSMutableArray array];
+         [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@",name]]];
+         [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]];
+         NSLog(@"%@",data);
+         
+         int arr[10];
+         score= 35;
+         for(int i = 0 ; i<data.count-1 ; i++)
+         {
+             arr[i] = [data[i+1][1] intValue];
+         }
+         int max_index;
+         for(int i = 0 ; i<data.count-1 ; i++)
+             if(score > arr[i])
+             {
+                 max_index= i+1 ;
+                 break ;
+             }
+         [data insertObject:data2 atIndex:max_index];
+
+         //[data addObject:data2];
+          //NSLog(@"%@",data);
+
+         //[data addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@,%d",name,data.count]]];
+         //NSLog(@"%@",[NSString stringWithFormat:@"%d",data.count]);
+         [data writeToFile:plistPath atomically:YES];
+         [dataSource addObjectsFromArray:data];
         //NSLog(@"%@",[data objectAtIndex:1]);
          
          
         
-    } else{ 
+    } else{ //沒有my.plist 建立檔案
         //[textView setText:@"沒有資料，讀取失敗！"];
         NSLog(@"沒有資料，讀取失敗！ init my.plist ");
+        NSMutableArray *data2 = [NSMutableArray array];
+        
+        [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@",name]]];
+        [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]];
         NSMutableArray *data = [[NSArray alloc] initWithObjects:@"Default,0", nil];
-
+        
         [data writeToFile:plistPath atomically:YES];
         [dataSource addObjectsFromArray:data];
+        
+        
+        NSMutableArray *data3 = [[NSArray alloc]initWithContentsOfFile:plistPath];
+        [data3 addObject:data2];
+        [data3 writeToFile:plistPath atomically:YES];
+        [dataSource addObjectsFromArray:data3];
+        
         
     }
     
