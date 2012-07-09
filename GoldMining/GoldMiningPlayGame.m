@@ -69,7 +69,7 @@ NSString *name = @"";
 
 @implementation GoldMiningPlayGame
 @synthesize lblA;
-@synthesize lblB;
+@synthesize levelLabel;
 @synthesize timerLabel;
 @synthesize timer;
 
@@ -104,10 +104,10 @@ NSString *name = @"";
     [self setTimerLabel:nil];
     // 記得清掉所有產生的button
     [self setLblA:nil];
-    [self setLblB:nil];
 	pauseView = nil;
 	gameOverView = nil;
 	name = nil;
+	[self setLevelLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -131,6 +131,8 @@ NSString *name = @"";
     goldNum = (Row - Col) * 2 * level;
     shitNum = (Row - Col) * 2 * level;
     //self.lblScore.text = [NSString stringWithFormat:@"第%d關 %d / %d   得分：%d   剩餘生命：%d", level, goldCount, goldNum, score, die];
+	levelLabel.text = [[NSString alloc] initWithFormat:@"第 %d 關", level];
+	lblA.text = [[NSString alloc] initWithFormat:@"%d/%d", goldCount, goldNum];
     [self putTimer];  // 放TImer
     [self putButton]; // 放Button
 }
@@ -145,17 +147,8 @@ NSString *name = @"";
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
     isPause = NO;
     // 依據level改變時間限制
-    switch (level) {
-        case 1:
-            time_count = 120;
-            break;
-        case 2:
-            time_count = 200;
-        case 3:
-            time_count = 300;
-        default:
-            break;
-    }
+	time_count = level * 60;
+	
     self.timerLabel.text = [[NSString alloc] initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
 }
 
@@ -175,7 +168,7 @@ NSString *name = @"";
             int goldRand = (arc4random() % (Row * Col)) + 1;
             count = 0;
             
-            for(int j = 0; j < [arrGold count]; j++)
+            for (int j = 0; j < [arrGold count]; j++)
             {
                 if (goldRand == [((NSNumber*)[arrGold objectAtIndex:j]) intValue])
                     count ++;
@@ -208,12 +201,12 @@ NSString *name = @"";
             {
                 if (shitRand == [((NSNumber*)[arrShit objectAtIndex:j]) intValue])
                     count ++;
-                
-                for(int k = 0; k < [arrGold count]; k++)
-                {
-                    if (shitRand == [((NSNumber*)[arrGold objectAtIndex:k]) intValue])
-                        count ++;
-                }
+            }
+            
+            for (int k = 0; k < [arrGold count]; k++)
+            {
+                if (shitRand == [((NSNumber*)[arrGold objectAtIndex:k]) intValue])
+                    count ++;
             }
             
             if (count == 0)
@@ -712,18 +705,20 @@ NSString *name = @"";
     // 重來 -> 清掉所有產生的東西 重新配置
 }
 
-- (void)updateTimer:(NSTimer *)theTimer {
+- (void)updateTimer:(NSTimer *)theTimer 
+{
 	//static int count = 120;
-    if(time_count == 0) {
+    if(time_count == 0) 
+	{
         // Game Over
         [self gameOver:-1];
-    } else if(!isPause){    // isPause == NO -> run
+    } 
+	else if(!isPause)
+	{
         time_count--;
-        NSString *s = [[NSString alloc]
-                       initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
-        self.timerLabel.text = s;
     }
 	
+	timerLabel.text = [[NSString alloc] initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
 }
 
 // 按鈕事件
@@ -921,6 +916,7 @@ NSString *name = @"";
     {
         [self gameOver:2];
     }
+	lblA.text = [[NSString alloc] initWithFormat:@"%d/%d", goldCount, goldNum];	// update label
 }
 
 - (void)putSubView
@@ -998,7 +994,7 @@ NSString *name = @"";
 	// saveScoreView
 	CGRect saveScoreViewRect = CGRectMake(scoreLabel.bounds.origin.x, scoreLabel.frame.origin.y + scoreLabel.bounds.size.height, gameOverMsgView.frame.size.width, 20);
     saveScoreView = [[UIView alloc] initWithFrame:saveScoreViewRect];
-	[gameOverMsgView addSubview:saveScoreView];
+	//[gameOverMsgView addSubview:saveScoreView];
 	
 	// nameText
 	CGRect nameTextRect = CGRectMake(0, 0, saveScoreView.frame.size.width * 0.7, saveScoreView.frame.size.height);
@@ -1116,9 +1112,8 @@ NSString *name = @"";
 	// if (replaybtn) rePlayBtnPressed
 	// if (nextLvbtn) releaseGame; setGame;
 	
-	if (result != 2 || level >= 3)	// allOver
+	if (result != 2)	// allOver
 	{
-		[nextLevelBtn removeFromSuperview];	// 沒有下一關了
 		[self allOver];
 	}
 	else
@@ -1139,6 +1134,7 @@ NSString *name = @"";
 {
     // 三關結束後做的事：要使用者輸入姓名 記錄成績
 	// 放text field和存檔button
+	[nextLevelBtn removeFromSuperview];
 	[gameOverMsgView addSubview:saveScoreView];	// 存成績View
     NSLog(@"Ya!");
 }
@@ -1206,6 +1202,12 @@ NSString *name = @"";
     }
 	
 	[saveScoreView removeFromSuperview];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![nameText isExclusiveTouch]) {
+        [nameText resignFirstResponder];
+    }
 }
 
 @end
