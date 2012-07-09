@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface GoldMiningPlayGame : UIViewController
-
+{
+    NSMutableArray *dataSource;
+}
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 - (IBAction)clickGamePause:(id)sender;
 

@@ -38,6 +38,7 @@ UIView *gameOverMsgView ;
 UIButton *rePlayBtn;
 UIButton *nextLevelBtn;	// 下一關
 UIView *saveScoreView;
+UITextField *nameText;
 NSString *name = @"";
 
 @interface GoldMiningPlayGame ()
@@ -1001,7 +1002,7 @@ NSString *name = @"";
 	
 	// nameText
 	CGRect nameTextRect = CGRectMake(0, 0, saveScoreView.frame.size.width * 0.7, saveScoreView.frame.size.height);
-	UITextField *nameText = [[UITextField alloc] initWithFrame:nameTextRect];
+	nameText = [[UITextField alloc] initWithFrame:nameTextRect];
 	nameText.text = name;
 	nameText.placeholder = @"Please Enter Your Name!";	// 提示文字
 	[saveScoreView addSubview:nameText];
@@ -1144,11 +1145,53 @@ NSString *name = @"";
 
 - (IBAction)saveScore:(id)sender
 {
+    NSString *Score_user_name;
+    NSInteger Score_num = 0;
     // 成績扔到SQLite
 	// 考慮10筆存plist，key -> 成績 value -> name 取出時先對key排序再一一列出
-	if ([name isEqual:@""]) name = @"無名氏";
+    name = [name isEqualToString:@""] ? @"無名氏" : @"";
+
 	// 參考 http://furnacedigital.blogspot.tw/2012/03/document.html#more
-	NSLog(@"abc");
+    dataSource = [[NSMutableArray alloc] init];
+    
+    // from property list
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+
+    
+    NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"my.plist"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+
+    //應用程式的暫存區
+    //NSString *path3 = NSTemporaryDirectory;
+    //NSLog(path3);
+    //判斷plist檔案存在才讀取
+    
+     if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath] ) {
+        NSMutableArray *data = [[NSArray alloc]initWithContentsOfFile:plistPath];
+         NSMutableArray *data2;
+         data2 = data;
+         NSLog(@"%@",[NSString stringWithFormat:@"%d",data.count]);
+         [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@,%d",name,data.count]]];
+         NSLog(@"%@",[NSString stringWithFormat:@"%d",data.count]);
+         [data2 writeToFile:plistPath atomically:YES];
+         [dataSource addObjectsFromArray:data2];
+        //NSLog(@"%@",[data objectAtIndex:1]);
+         
+         
+        
+    } else{ 
+        //[textView setText:@"沒有資料，讀取失敗！"];
+        NSLog(@"沒有資料，讀取失敗！ init my.plist ");
+        NSMutableArray *data = [[NSArray alloc] initWithObjects:@"Default,0", nil];
+
+        [data writeToFile:plistPath atomically:YES];
+        [dataSource addObjectsFromArray:data];
+        
+    }
+    
+    
 }
 
 - (void)releaseGame
