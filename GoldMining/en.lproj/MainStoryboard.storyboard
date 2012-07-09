@@ -203,7 +203,9 @@
                 <relationship kind="action" name="backBtnPressed:"/>
                 <relationship kind="action" name="buttonClicked:"/>
                 <relationship kind="action" name="clickGamePause:"/>
+                <relationship kind="action" name="homeBtnPressed:"/>
                 <relationship kind="action" name="levelBtnPressed:"/>
+                <relationship kind="action" name="nextLevelBtnPressed:"/>
                 <relationship kind="action" name="rePlayBtnPressed:"/>
                 <relationship kind="action" name="saveScore:"/>
                 <relationship kind="outlet" name="lblA" candidateClass="UILabel"/>
