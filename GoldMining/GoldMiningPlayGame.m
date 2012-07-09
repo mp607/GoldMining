@@ -1129,6 +1129,7 @@ NSString *name = @"";
 {
     // 三關結束後做的事：要使用者輸入姓名 記錄成績
 	// 放text field和存檔button
+	[nextLevelBtn removeFromSuperview];
 	[gameOverMsgView addSubview:saveScoreView];	// 存成績View
     NSLog(@"Ya!");
 }
