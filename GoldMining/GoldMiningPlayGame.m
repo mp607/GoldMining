@@ -145,17 +145,8 @@ NSString *name = @"";
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
     isPause = NO;
     // 依據level改變時間限制
-    switch (level) {
-        case 1:
-            time_count = 120;
-            break;
-        case 2:
-            time_count = 200;
-        case 3:
-            time_count = 300;
-        default:
-            break;
-    }
+	time_count = level * 60;
+	
     self.timerLabel.text = [[NSString alloc] initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
 }
 
@@ -1116,9 +1107,8 @@ NSString *name = @"";
 	// if (replaybtn) rePlayBtnPressed
 	// if (nextLvbtn) releaseGame; setGame;
 	
-	if (result != 2 || level >= 3)	// allOver
+	if (result != 2)	// allOver
 	{
-		[nextLevelBtn removeFromSuperview];	// 沒有下一關了
 		[self allOver];
 	}
 	else
