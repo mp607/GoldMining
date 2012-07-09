@@ -38,6 +38,7 @@ UIView *gameOverMsgView ;
 UIButton *rePlayBtn;
 UIButton *nextLevelBtn;	// 下一關
 UIView *saveScoreView;
+UITextField *nameText;
 NSString *name = @"";
 
 @interface GoldMiningPlayGame ()
@@ -1001,7 +1002,7 @@ NSString *name = @"";
 	
 	// nameText
 	CGRect nameTextRect = CGRectMake(0, 0, saveScoreView.frame.size.width * 0.7, saveScoreView.frame.size.height);
-	UITextField *nameText = [[UITextField alloc] initWithFrame:nameTextRect];
+	nameText = [[UITextField alloc] initWithFrame:nameTextRect];
 	nameText.text = name;
 	nameText.placeholder = @"Please Enter Your Name!";	// 提示文字
 	[saveScoreView addSubview:nameText];
@@ -1163,6 +1164,12 @@ NSString *name = @"";
     }
 	
 	[saveScoreView removeFromSuperview];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (![nameText isExclusiveTouch]) {
+        [nameText resignFirstResponder];
+    }
 }
 
 @end
