@@ -209,7 +209,6 @@
 		4DCE557315A2E1D70099B114 = {
 			isa = PBXGroup;
 			children = (
-				4D60198F15A3E0AF0061366C /* Twitter.framework */,
 				4DF2953215A3D8AB00BB6199 /* Rescourse */,
 				4DCE558815A2E1D70099B114 /* GoldMining */,
 				4DCE55A615A2E1D70099B114 /* GoldMiningTests */,
@@ -230,6 +229,7 @@
 		4DCE558115A2E1D70099B114 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D60198F15A3E0AF0061366C /* Twitter.framework */,
 				4DCE558215A2E1D70099B114 /* UIKit.framework */,
 				4DCE558415A2E1D70099B114 /* Foundation.framework */,
 				4DCE558615A2E1D70099B114 /* CoreGraphics.framework */,
