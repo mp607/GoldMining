@@ -41,6 +41,7 @@
                                 </state>
                                 <connections>
                                     <action selector="scorePressed:" destination="2" eventType="touchUpInside" id="Dyl-jE-FsO"/>
+                                    <segue destination="aNE-7h-aDS" kind="modal" id="09O-c6-0nd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Dk-ca-Rqb">
@@ -85,6 +86,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="81" y="-2"/>
+        </scene>
+        <!--Gold Mining Score View-->
+        <scene sceneID="XCP-Sm-IOr">
+            <objects>
+                <viewController id="aNE-7h-aDS" customClass="GoldMiningScoreView" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7I0-Qy-xgL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rfJ-b9-cuj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="547" y="139"/>
         </scene>
         <!--Gold Mining Play Game-->
         <scene sceneID="Cjq-7V-8ag">
@@ -177,6 +192,9 @@
                 <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="timerLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="GoldMiningScoreView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningScoreView.h"/>
         </class>
         <class className="GoldMiningViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningViewController.h"/>
