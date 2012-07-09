@@ -998,7 +998,7 @@ NSString *name = @"";
 	// saveScoreView
 	CGRect saveScoreViewRect = CGRectMake(scoreLabel.bounds.origin.x, scoreLabel.frame.origin.y + scoreLabel.bounds.size.height, gameOverMsgView.frame.size.width, 20);
     saveScoreView = [[UIView alloc] initWithFrame:saveScoreViewRect];
-	[gameOverMsgView addSubview:saveScoreView];
+	//[gameOverMsgView addSubview:saveScoreView];
 	
 	// nameText
 	CGRect nameTextRect = CGRectMake(0, 0, saveScoreView.frame.size.width * 0.7, saveScoreView.frame.size.height);
@@ -1148,6 +1148,7 @@ NSString *name = @"";
     // 成績扔到SQLite
 	// 考慮10筆存plist，key -> 成績 value -> name 取出時先對key排序再一一列出
 	if ([name isEqual:@""]) name = @"無名氏";
+	[nameText resignFirstResponder];
 	// 參考 http://furnacedigital.blogspot.tw/2012/03/document.html#more
 	NSLog(@"abc");
 }
