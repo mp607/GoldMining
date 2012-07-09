@@ -680,7 +680,7 @@ NSString *name = @"";
             UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             button.frame = frame;
             //[button setTitle:[arrGame objectAtIndex:k] forState: UIControlStateNormal];
-            //[button setTitle:@" " forState: UIControlStateNormal];
+            [button setTitle:@"" forState: UIControlStateNormal];
             //button.backgroundColor = [UIColor clearColor];
             //[button setBackgroundImage:[UIImage imageNamed:@"floor.png"] forState:UIControlStateNormal];
             button.alpha = 0.7;
@@ -724,8 +724,12 @@ NSString *name = @"";
 // 按鈕事件
 - (IBAction)buttonClicked:(UIButton *)btn
 {
-    [btn setAlpha:1.0]; // 無作用(?)
-    btn.enabled = false;
+   if (btn.currentTitle == @"")
+   {
+       [btn setTitle:@" " forState: UIControlStateNormal];
+       // btn.enabled = false;
+       // [btn setAlpha:1.0]; // 無作用(?)
+       btn.alpha = 1.0;
     
     switch (btn.tag % 100)
     {
@@ -903,6 +907,7 @@ NSString *name = @"";
             
         default:
             break;
+    }
     }
     
     //self.lblScore.text = [NSString stringWithFormat:@"第%d關 %d / %d   得分：%d   剩餘生命：%d", level, goldCount, goldNum, score, die];
