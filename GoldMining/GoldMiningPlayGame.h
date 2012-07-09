@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface GoldMiningPlayGame : UIViewController
-{
-    NSMutableArray *dataSource;
-}
+
 @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;

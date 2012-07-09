@@ -31,11 +31,11 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0];
     NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"my.plist"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //NSFileManager *fileManager = [NSFileManager defaultManager];
     
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath] ) {
-        NSMutableArray *data = [[NSArray alloc]initWithContentsOfFile:plistPath];
+        NSMutableArray *data = [[NSMutableArray alloc]initWithContentsOfFile:plistPath];
         NSLog(@"%@",[NSString stringWithFormat:@"%d",data.count]);
        
 
@@ -46,10 +46,9 @@
         int arr[10];
         for(int i = 0 ; i<data.count-1 ; i++)
         {
-            arr[i] = [data[i+1][1] intValue];
+           // arr[i] = [data[i+1][1] intValue];
         }
         //[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]
-        int max;
         for(int i = 0 ; i<data.count-1 ; i++)
         {
             NSLog(@"%@",[NSString stringWithFormat:[NSString stringWithFormat:@"%d",arr[i]]]);
@@ -59,7 +58,7 @@
     } else{ 
         //[textView setText:@"沒有資料，讀取失敗！"];
         NSLog(@"沒有資料，讀取失敗！ init my.plist ");
-        NSMutableArray *data = [[NSArray alloc] initWithObjects:@"Default,0", nil];
+        NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:@"Default,0", nil];
         
         [data writeToFile:plistPath atomically:YES];
         [dataSource addObjectsFromArray:data];

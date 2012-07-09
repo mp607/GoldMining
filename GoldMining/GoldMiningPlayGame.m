@@ -29,6 +29,7 @@ level = 1,		// 第幾關
 score = 0,		// 累積分數
 goldCount = 0;	// 挖到黃金數
 
+NSMutableArray *dataSource;
 NSMutableArray *buttonMapping;
 UIView *pauseView;
 UIView *gameOverView;
@@ -46,6 +47,7 @@ NSString *name = @"";
     Boolean isPause;
     int time_count;
 }
+/*
 - (void)setGame ;    // 初始化
 - (void)putTimer ;   // 設定Timer
 - (void)putButton ;  // 放按鈕
@@ -62,7 +64,7 @@ NSString *name = @"";
 - (void)gameOver:(int)result ;  // 顯示成績之類
 - (void)allOver ;   // 三關結束後做的事
 - (IBAction)saveScore:(id)sender ;    // 記錄成績
-
+*/
 @property NSTimer *timer;
 
 @end
@@ -1141,7 +1143,6 @@ NSString *name = @"";
 
 - (IBAction)saveScore:(id)sender
 {
-
     // 成績扔到SQLite
 	// 考慮10筆存plist，key -> 成績 value -> name 取出時先對key排序再一一列出
     //name = [name isEqualToString:@""] ? @"無名氏" : [[NSString alloc] in]
@@ -1156,16 +1157,16 @@ NSString *name = @"";
 
     
     NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"my.plist"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
+    //NSFileManager *fileManager = [NSFileManager defaultManager];
     
 
     //應用程式的暫存區
     //NSString *path3 = NSTemporaryDirectory;
     //NSLog(path3);
     //判斷plist檔案存在才讀取
-    
-     if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath] ) {
-        NSMutableArray *data = [[NSArray alloc]initWithContentsOfFile:plistPath];
+     if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath] ) 
+	 {
+        NSMutableArray *data = [[NSMutableArray alloc]initWithContentsOfFile:plistPath];
         NSMutableArray *data2 = [NSMutableArray array];
          [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@",name]]];
          [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]];
@@ -1175,9 +1176,9 @@ NSString *name = @"";
          //score= 35;
          for(int i = 0 ; i<data.count-1 ; i++)
          {
-             arr[i] = [data[i+1][1] intValue];
+          //   arr[i] = [data[i+1][1] intValue];
          }
-         int max_index;
+         int max_index = 1;
          for(int i = 0 ; i<data.count-1 ; i++)
              if(score > arr[i])
              {
@@ -1197,32 +1198,35 @@ NSString *name = @"";
          
          
         
-    } else{ //沒有my.plist 建立檔案
+    }
+	else
+	{ //沒有my.plist 建立檔案
         //[textView setText:@"沒有資料，讀取失敗！"];
         NSLog(@"沒有資料，讀取失敗！ init my.plist ");
-        NSMutableArray *data2 = [NSMutableArray array];
+        /*
+		NSMutableArray *data2 = [NSMutableArray array];
         
         [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@",name]]];
         [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]];
-        NSMutableArray *data = [[NSArray alloc] initWithObjects:@"Default,0", nil];
+        */
+		 NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:[[NSMutableArray alloc] initWithObjects:name,[[NSString alloc] initWithFormat:@"%d",score], nil], nil];
         
         [data writeToFile:plistPath atomically:YES];
         [dataSource addObjectsFromArray:data];
         
-        
-        NSMutableArray *data3 = [[NSArray alloc]initWithContentsOfFile:plistPath];
+        /*
+        NSMutableArray *data3 = [[NSMutableArray alloc]initWithContentsOfFile:plistPath];
         [data3 addObject:data2];
         [data3 writeToFile:plistPath atomically:YES];
         [dataSource addObjectsFromArray:data3];
-        
+        */
         
     }
-    
-    
 }
 
 - (void)releaseGame
 {
+	score = 0;
     //timer = nil;
     // 清Button
     [timer invalidate];
