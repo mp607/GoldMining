@@ -65,4 +65,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)setLabel
+{
+	int i;
+	for (i=0; i<10; i++) {
+		CGRect labelRect = CGRectMake(self.view.frame.size.width / 10, (self.view.frame.size.height / 12) * i, self.view.frame.size.width * 0.8, self.view.frame.size.height / 12);
+		UILabel *label = [[UILabel alloc] initWithFrame:labelRect];
+		
+		[self.view addSubview:label];
+	}
+}
+
 @end
