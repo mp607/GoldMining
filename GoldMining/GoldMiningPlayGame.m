@@ -174,7 +174,7 @@ NSString *name = @"";
             int goldRand = (arc4random() % (Row * Col)) + 1;
             count = 0;
             
-            for(int j = 0; j < [arrGold count]; j++)
+            for (int j = 0; j < [arrGold count]; j++)
             {
                 if (goldRand == [((NSNumber*)[arrGold objectAtIndex:j]) intValue])
                     count ++;
@@ -207,12 +207,12 @@ NSString *name = @"";
             {
                 if (shitRand == [((NSNumber*)[arrShit objectAtIndex:j]) intValue])
                     count ++;
-                
-                for(int k = 0; k < [arrGold count]; k++)
-                {
-                    if (shitRand == [((NSNumber*)[arrGold objectAtIndex:k]) intValue])
-                        count ++;
-                }
+            }
+            
+            for (int k = 0; k < [arrGold count]; k++)
+            {
+                if (shitRand == [((NSNumber*)[arrGold objectAtIndex:k]) intValue])
+                    count ++;
             }
             
             if (count == 0)
