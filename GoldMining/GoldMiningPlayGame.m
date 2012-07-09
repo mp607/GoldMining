@@ -69,6 +69,7 @@ NSString *name = @"";
 
 @implementation GoldMiningPlayGame
 @synthesize lblA;
+@synthesize levelLabel;
 @synthesize timerLabel;
 @synthesize timer;
 
@@ -106,6 +107,7 @@ NSString *name = @"";
 	pauseView = nil;
 	gameOverView = nil;
 	name = nil;
+	[self setLevelLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -129,6 +131,7 @@ NSString *name = @"";
     goldNum = (Row - Col) * 2 * level;
     shitNum = (Row - Col) * 2 * level;
     //self.lblScore.text = [NSString stringWithFormat:@"第%d關 %d / %d   得分：%d   剩餘生命：%d", level, goldCount, goldNum, score, die];
+	levelLabel.text = [[NSString alloc] initWithFormat:@"第 %d 關", level];
 	lblA.text = [[NSString alloc] initWithFormat:@"%d/%d", goldCount, goldNum];
     [self putTimer];  // 放TImer
     [self putButton]; // 放Button
