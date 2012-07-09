@@ -41,12 +41,12 @@
 
 
         
-
+        
 
         int arr[10];
         for(int i = 0 ; i<data.count-1 ; i++)
         {
-           // arr[i] = [data[i+1][1] intValue];
+            arr[i] = [[[data objectAtIndex:i+1]objectAtIndex:1] intValue];
         }
         //[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]
         for(int i = 0 ; i<data.count-1 ; i++)
