@@ -1172,7 +1172,7 @@ NSString *name = @"";
          NSLog(@"%@",data);
          
          int arr[10];
-         score= 35;
+         //score= 35;
          for(int i = 0 ; i<data.count-1 ; i++)
          {
              arr[i] = [data[i+1][1] intValue];
