@@ -34,8 +34,11 @@ UIView *pauseView;
 UIView *gameOverView;
 UILabel *msgLabel;		// 遊戲結果用
 UILabel *scoreLabel;	// 顯示分數
+UIView *gameOverMsgView ;
 UIButton *rePlayBtn;
 UIButton *nextLevelBtn;	// 下一關
+UIView *saveScoreView;
+NSString *name = @"";
 
 @interface GoldMiningPlayGame ()
 {
@@ -57,7 +60,7 @@ UIButton *nextLevelBtn;	// 下一關
 
 - (void)gameOver:(int)result ;  // 顯示成績之類
 - (void)allOver ;   // 三關結束後做的事
-- (void)saveScore:(NSString *)name ;    // 記錄成績
+- (IBAction)saveScore:(id)sender ;    // 記錄成績
 
 @property NSTimer *timer;
 
@@ -103,6 +106,7 @@ UIButton *nextLevelBtn;	// 下一關
     [self setLblB:nil];
 	pauseView = nil;
 	gameOverView = nil;
+	name = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -957,7 +961,7 @@ UIButton *nextLevelBtn;	// 下一關
     
 	// gameOverMsgView
     CGRect gameOverMsgRect = CGRectMake(gameOverView.bounds.size.width / 4, gameOverView.bounds.size.height /4, gameOverView.bounds.size.width / 2 , gameOverView.bounds.size.height / 2);
-    UIView *gameOverMsgView = [[UIView alloc] initWithFrame:gameOverMsgRect];
+    gameOverMsgView = [[UIView alloc] initWithFrame:gameOverMsgRect];
     gameOverMsgView.backgroundColor = [UIColor colorWithRed:0.8 green:0.2 blue:0 alpha:0.7];
 	[gameOverView addSubview:gameOverMsgView];
 	
@@ -989,6 +993,25 @@ UIButton *nextLevelBtn;	// 下一關
 	[scoreLabel setFont:[UIFont systemFontOfSize:20]];
 	scoreLabel.textAlignment = UITextAlignmentCenter;
 	[gameOverMsgView addSubview:scoreLabel];
+	
+	// saveScoreView
+	CGRect saveScoreViewRect = CGRectMake(scoreLabel.bounds.origin.x, scoreLabel.frame.origin.y + scoreLabel.bounds.size.height, gameOverMsgView.frame.size.width, 20);
+    saveScoreView = [[UIView alloc] initWithFrame:saveScoreViewRect];
+	[gameOverMsgView addSubview:saveScoreView];
+	
+	// nameText
+	CGRect nameTextRect = CGRectMake(0, 0, saveScoreView.frame.size.width * 0.7, saveScoreView.frame.size.height);
+	UITextField *nameText = [[UITextField alloc] initWithFrame:nameTextRect];
+	nameText.text = name;
+	nameText.placeholder = @"Please Enter Your Name!";	// 提示文字
+	[saveScoreView addSubview:nameText];
+	
+	// saveBtn
+	CGRect saveBtnRect = CGRectMake(nameText.frame.size.width, 0, saveScoreView.frame.size.width * 0.3, saveScoreView.frame.size.height);
+	UIButton *saveBtn = [[UIButton alloc] initWithFrame:saveBtnRect];
+	[saveBtn setTitle:@"Save" forState:UIControlStateNormal];
+	[saveBtn addTarget:self action:@selector(saveScore:) forControlEvents:UIControlEventTouchUpInside];
+	[saveScoreView addSubview:saveBtn];
 	
 	// gameOverRePlayBtn
     CGRect gameOverRePlayBtnRect = CGRectMake(gameOverView.bounds.size.width * 0.25 - 24, gameOverView.bounds.size.height * 0.75 - 24, 48, 48);
@@ -1099,7 +1122,7 @@ UIButton *nextLevelBtn;	// 下一關
 	}
 	else
 	{
-		[gameOverView addSubview:nextLevelBtn];
+		[gameOverView addSubview:nextLevelBtn];	// 有下一關
 	}
 	
 	// 放置gameOverView
@@ -1114,12 +1137,18 @@ UIButton *nextLevelBtn;	// 下一關
 - (void)allOver
 {
     // 三關結束後做的事：要使用者輸入姓名 記錄成績
+	// 放text field和存檔button
+	[gameOverMsgView addSubview:saveScoreView];	// 存成績View
     NSLog(@"Ya!");
 }
 
-- (void)saveScore:(NSString *)name
+- (IBAction)saveScore:(id)sender
 {
     // 成績扔到SQLite
+	// 考慮10筆存plist，key -> 成績 value -> name 取出時先對key排序再一一列出
+	if ([name isEqual:@""]) name = @"無名氏";
+	// 參考 http://furnacedigital.blogspot.tw/2012/03/document.html#more
+	NSLog(@"abc");
 }
 
 - (void)releaseGame
@@ -1132,6 +1161,8 @@ UIButton *nextLevelBtn;	// 下一關
     for (int i = 0; i< [buttonMapping count]; i++) {
         [[buttonMapping objectAtIndex:i] removeFromSuperview];
     }
+	
+	[saveScoreView removeFromSuperview];
 }
 
 @end
