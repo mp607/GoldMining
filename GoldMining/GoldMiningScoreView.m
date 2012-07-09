@@ -26,17 +26,34 @@
 - (void)viewDidLoad
 {
     //if ([name isEqualToString:@""]) name = @"無名氏";
-     NSLog(@"rrrrfgfdg");
+
     dataSource = [[NSMutableArray alloc] init];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0];
     NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"my.plist"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    
     if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath] ) {
         NSMutableArray *data = [[NSArray alloc]initWithContentsOfFile:plistPath];
         NSLog(@"%@",[NSString stringWithFormat:@"%d",data.count]);
        
+
+
         
+
+
+        int arr[10];
+        for(int i = 0 ; i<data.count-1 ; i++)
+        {
+            arr[i] = [data[i+1][1] intValue];
+        }
+        //[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]
+        int max;
+        for(int i = 0 ; i<data.count-1 ; i++)
+        {
+            NSLog(@"%@",[NSString stringWithFormat:[NSString stringWithFormat:@"%d",arr[i]]]);
+        }
         
         
     } else{ 
@@ -46,10 +63,9 @@
         
         [data writeToFile:plistPath atomically:YES];
         [dataSource addObjectsFromArray:data];
-        
     }
     [super viewDidLoad];
-    NSLog(@"fgfdg");
+    
 
 	// Do any additional setup after loading the view.
 }
