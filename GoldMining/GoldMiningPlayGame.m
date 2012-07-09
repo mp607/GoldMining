@@ -708,15 +708,17 @@ NSString *name = @"";
 - (void)updateTimer:(NSTimer *)theTimer 
 {
 	//static int count = 120;
-    if(time_count == 0) {
+    if(time_count == 0) 
+	{
         // Game Over
         [self gameOver:-1];
-    } else if(!isPause){    // isPause == NO -> run
+    } 
+	else if(!isPause)
+	{
         time_count--;
-        NSString *s = [[NSString alloc]
-                       initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
-        self.timerLabel.text = s;
     }
+	
+	timerLabel.text = [[NSString alloc] initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
 }
 
 // 按鈕事件
