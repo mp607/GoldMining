@@ -69,7 +69,6 @@ NSString *name = @"";
 
 @implementation GoldMiningPlayGame
 @synthesize lblA;
-@synthesize lblB;
 @synthesize timerLabel;
 @synthesize timer;
 
@@ -104,7 +103,6 @@ NSString *name = @"";
     [self setTimerLabel:nil];
     // 記得清掉所有產生的button
     [self setLblA:nil];
-    [self setLblB:nil];
 	pauseView = nil;
 	gameOverView = nil;
 	name = nil;
@@ -131,6 +129,7 @@ NSString *name = @"";
     goldNum = (Row - Col) * 2 * level;
     shitNum = (Row - Col) * 2 * level;
     //self.lblScore.text = [NSString stringWithFormat:@"第%d關 %d / %d   得分：%d   剩餘生命：%d", level, goldCount, goldNum, score, die];
+	lblA.text = [[NSString alloc] initWithFormat:@"%d/%d", goldCount, goldNum];
     [self putTimer];  // 放TImer
     [self putButton]; // 放Button
 }
@@ -703,7 +702,8 @@ NSString *name = @"";
     // 重來 -> 清掉所有產生的東西 重新配置
 }
 
-- (void)updateTimer:(NSTimer *)theTimer {
+- (void)updateTimer:(NSTimer *)theTimer 
+{
 	//static int count = 120;
     if(time_count == 0) {
         // Game Over
@@ -714,7 +714,6 @@ NSString *name = @"";
                        initWithFormat:@"\t%d:\t%d", time_count/60 ,time_count%60];
         self.timerLabel.text = s;
     }
-	
 }
 
 // 按鈕事件
@@ -912,6 +911,7 @@ NSString *name = @"";
     {
         [self gameOver:2];
     }
+	lblA.text = [[NSString alloc] initWithFormat:@"%d/%d", goldCount, goldNum];	// update label
 }
 
 - (void)putSubView

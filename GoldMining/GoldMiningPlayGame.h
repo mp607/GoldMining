@@ -14,6 +14,5 @@
 - (IBAction)clickGamePause:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblA;
-@property (weak, nonatomic) IBOutlet UILabel *lblB;
 
 @end
