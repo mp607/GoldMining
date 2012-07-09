@@ -935,12 +935,12 @@ NSString *name = @"";
     [pauseView addSubview:backBtn];
     
     
-    // levelButton
-    CGRect levelBtnRect = CGRectMake(pauseView.frame.size.width * 0.5 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
-    UIButton *levelBtn = [[UIButton alloc] initWithFrame:levelBtnRect];
-    [levelBtn addTarget:self action:@selector(levelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    levelBtn.backgroundColor = [UIColor purpleColor];
-    [pauseView addSubview:levelBtn];
+    // homeBtn
+	CGRect homeBtnRect = CGRectMake(pauseView.bounds.size.width * 0.5 - 24, pauseView.bounds.size.height / 2 - 24, 48, 48);
+    UIButton *homeBtn = [[UIButton alloc] initWithFrame:homeBtnRect];
+	[homeBtn setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
+	[homeBtn addTarget:self action:@selector(homeBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [pauseView addSubview:homeBtn];
     
     // rePlayBtn
     CGRect rePlayBtnRect = CGRectMake(pauseView.frame.size.width * 0.75 - 24, pauseView.frame.size.height / 2 - 24, 48, 48);
@@ -1040,12 +1040,6 @@ NSString *name = @"";
     isPause = NO;
 }
 
-- (IBAction)levelBtnPressed:(id)sender
-{
-    // 回到GoldMiningSelectLevel
-    
-}
-
 - (IBAction)rePlayBtnPressed:(UIButton *)sender //待完成
 {
     // 清掉所有值
@@ -1077,6 +1071,7 @@ NSString *name = @"";
 
 - (IBAction)homeBtnPressed:(id)sender
 {
+	
 	// bake to Home
 }
 
