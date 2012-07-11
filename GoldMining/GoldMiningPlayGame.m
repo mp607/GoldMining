@@ -47,6 +47,7 @@ NSString *name = @"";
     Boolean isPause;
     int time_count;
 }
+
 /*
 - (void)setGame ;    // 初始化
 - (void)putTimer ;   // 設定Timer
@@ -54,7 +55,7 @@ NSString *name = @"";
 - (IBAction)clickGamePause:(id)sender ; //按下暫停按鈕
 
 - (void)updateTimer:(NSTimer *)theTimer ;  // UpdateTimer
-- (IBAction) buttonClicked:(id)sender ;  // 踩踩樂
+- (IBAction)buttonClicked:(UIButton *)btn ;  // 踩踩樂
 
 - (void)putSubView ;  // 放置passView gameOverView
 - (IBAction)backBtnPressed:(id)sender ;
@@ -65,6 +66,7 @@ NSString *name = @"";
 - (void)allOver ;   // 三關結束後做的事
 - (IBAction)saveScore:(id)sender ;    // 記錄成績
 */
+
 @property NSTimer *timer;
 
 @end
@@ -92,14 +94,6 @@ NSString *name = @"";
 	// Do any additional setup after loading the view.
 }
 
-/*
-- (void)viewDidLoad: (int) s setLevel: (int) l
-{
-    [self setGame:l];
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-*/
 - (void)viewDidUnload
 {
     [self releaseGame];
@@ -138,12 +132,7 @@ NSString *name = @"";
     [self putTimer];  // 放TImer
     [self putButton]; // 放Button
 }
-/*
-- (void)initGame:(int) l
-{
 
-}
-*/
 - (void)putTimer
 {
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
@@ -999,15 +988,17 @@ NSString *name = @"";
 	[gameOverMsgView addSubview:scoreLabel];
 	
 	// saveScoreView
-	CGRect saveScoreViewRect = CGRectMake(scoreLabel.bounds.origin.x, scoreLabel.frame.origin.y + scoreLabel.bounds.size.height, gameOverMsgView.frame.size.width, 20);
+	CGRect saveScoreViewRect = CGRectMake(scoreLabel.bounds.origin.x, scoreLabel.frame.origin.y + scoreLabel.bounds.size.height, gameOverMsgView.frame.size.width, 30);
     saveScoreView = [[UIView alloc] initWithFrame:saveScoreViewRect];
 	//[gameOverMsgView addSubview:saveScoreView];
 	
 	// nameText
 	CGRect nameTextRect = CGRectMake(0, 0, saveScoreView.frame.size.width * 0.7, saveScoreView.frame.size.height);
 	nameText = [[UITextField alloc] initWithFrame:nameTextRect];
+	nameText.backgroundColor = [UIColor whiteColor];
+	nameText.borderStyle = UITextBorderStyleRoundedRect;
 	nameText.text = name;
-	nameText.placeholder = @"Please Enter Your Name!";	// 提示文字
+	nameText.placeholder = @"Your Name";	// 提示文字
 	[saveScoreView addSubview:nameText];
 	
 	// saveBtn
