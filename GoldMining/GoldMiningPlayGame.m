@@ -1133,86 +1133,49 @@ NSString *name = @"";
 
 - (IBAction)saveScore:(id)sender
 {
-    // 成績扔到SQLite
-	// 考慮10筆存plist，key -> 成績 value -> name 取出時先對key排序再一一列出
-    //name = [name isEqualToString:@""] ? @"無名氏" : [[NSString alloc] in]
-    name = nameText.text;
-    if ([name isEqualToString:@""]) name = @"無名氏";
 	// 參考 http://furnacedigital.blogspot.tw/2012/03/document.html#more
-    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
+	
+	name = (([nameText.text isEqualToString:@""]) ? @"無名氏" : nameText.text);
     
-    // from property list
+    // 取得檔案路徑
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0];
-
-    
-    NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"my.plist"];
-    //NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-
-    //應用程式的暫存區
-    //NSString *path3 = NSTemporaryDirectory;
-    //NSLog(path3);
-    //判斷plist檔案存在才讀取
-     if ([[NSFileManager defaultManager] fileExistsAtPath:plistPath] ) 
-	 {
-        NSMutableArray *data = [[NSMutableArray alloc]initWithContentsOfFile:plistPath];
-        NSMutableArray *data2 = [NSMutableArray array];
-         [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@",name]]];
-         [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]];
-         NSLog(@"%@",data);
-         
-         int arr[10];
-         //score= 35;
-         for(int i = 0 ; i<data.count-1 ; i++)
-         {
-			 arr[i] = [[[data objectAtIndex:i+1]objectAtIndex:1] intValue];
-
-         }
-         int max_index = 1;
-         for(int i = 0 ; i<data.count-1 ; i++)
-             if(score > arr[i])
-             {
-                 max_index= i+1 ;
-                 break ;
-             }
-         [data insertObject:data2 atIndex:max_index];
-
-         //[data addObject:data2];
-          //NSLog(@"%@",data);
-
-         //[data addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@,%d",name,data.count]]];
-         //NSLog(@"%@",[NSString stringWithFormat:@"%d",data.count]);
-         [data writeToFile:plistPath atomically:YES];
-         [dataSource addObjectsFromArray:data];
-        //NSLog(@"%@",[data objectAtIndex:1]);
-         
-         
-        
-    }
+    NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"score.plist"];
+	
+	// plist的資料
+	NSMutableArray *dataSource = [NSMutableArray array];
+	
+	// 資料字典
+	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:[NSDate date], @"date", name, @"name", [NSNumber numberWithInt:score], @"score", nil];
+	
+	if ( [[NSFileManager defaultManager] fileExistsAtPath:plistPath] )
+	{
+		// 讀出檔案
+		dataSource = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
+		
+		for (int i=0 ; i<=dataSource.count ; i++)
+		{
+			// 插入適當位置
+			if (i == dataSource.count)	// 先判斷以免objectAtIndex取不到值會炸
+			{
+				[dataSource addObject:dictionary];
+				break;	// 不然會因為i=dataSource.count變無窮迴圈
+			}
+			else if ([[[dataSource objectAtIndex:i] objectForKey:@"score"] intValue] <= score)
+			{
+				[dataSource insertObject:dictionary atIndex:i];
+				break;
+			}
+		}
+	}
 	else
-	{ //沒有my.plist 建立檔案
-        //[textView setText:@"沒有資料，讀取失敗！"];
-        NSLog(@"沒有資料，讀取失敗！ init my.plist ");
-        /*
-		NSMutableArray *data2 = [NSMutableArray array];
-        
-        [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%@",name]]];
-        [data2 addObject:[NSString stringWithFormat:[NSString stringWithFormat:@"%d",score]]];
-        */
-		 NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:[[NSMutableArray alloc] initWithObjects:name,[[NSString alloc] initWithFormat:@"%d",score], nil], nil];
-        
-        [data writeToFile:plistPath atomically:YES];
-        [dataSource addObjectsFromArray:data];
-        
-        /*
-        NSMutableArray *data3 = [[NSMutableArray alloc]initWithContentsOfFile:plistPath];
-        [data3 addObject:data2];
-        [data3 writeToFile:plistPath atomically:YES];
-        [dataSource addObjectsFromArray:data3];
-        */
-        
-    }
+	{
+		// 直接插入
+		[dataSource addObject:dictionary];
+	}
+	
+	[dataSource writeToFile:plistPath atomically: YES] ? NSLog(@"Success") : NSLog(@"Fail");
+	NSLog(@"跑完了%@", dataSource);
 }
 
 - (void)releaseGame
