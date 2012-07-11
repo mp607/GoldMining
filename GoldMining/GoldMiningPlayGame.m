@@ -29,7 +29,6 @@ level = 1,		// 第幾關
 score = 0,		// 累積分數
 goldCount = 0;	// 挖到黃金數
 
-NSMutableArray *dataSource;
 NSMutableArray *buttonMapping;
 UIView *pauseView;
 UIView *gameOverView;
@@ -1140,7 +1139,7 @@ NSString *name = @"";
     name = nameText.text;
     if ([name isEqualToString:@""]) name = @"無名氏";
 	// 參考 http://furnacedigital.blogspot.tw/2012/03/document.html#more
-    dataSource = [[NSMutableArray alloc] init];
+    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
     
     // from property list
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
