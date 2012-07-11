@@ -1153,13 +1153,15 @@ NSString *name = @"";
 		// 讀出檔案
 		dataSource = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
 		
+		while (dataSource.count >= 10) [dataSource removeLastObject];	// 不小心太長的時候，留下9個最高分記錄
+		
 		for (int i=0 ; i<=dataSource.count ; i++)
 		{
 			// 插入適當位置
 			if (i == dataSource.count)	// 先判斷以免objectAtIndex取不到值會炸
 			{
 				[dataSource addObject:dictionary];
-				break;	// 不然會因為i=dataSource.count變無窮迴圈
+				break;	// 跳出迴圈以免因為i==dataSource.count變無窮迴圈
 			}
 			else if ([[[dataSource objectAtIndex:i] objectForKey:@"score"] intValue] <= score)
 			{
@@ -1174,8 +1176,8 @@ NSString *name = @"";
 		[dataSource addObject:dictionary];
 	}
 	
-	[dataSource writeToFile:plistPath atomically: YES] ? NSLog(@"Success") : NSLog(@"Fail");
-	NSLog(@"跑完了%@", dataSource);
+	// 存檔
+	[dataSource writeToFile:plistPath atomically: YES] ? NSLog(@"Save score success") : NSLog(@"Fail to save score");
 }
 
 - (void)releaseGame
