@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0D76FF15ADBFFB00112134 /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D0D76FE15ADBFFB00112134 /* board.png */; };
 		4D26F9F415A40F5000712D88 /* GoldMiningPlayGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D26F9F315A40F5000712D88 /* GoldMiningPlayGame.m */; };
 		4D26FA0315A421C200712D88 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D26FA0215A421C200712D88 /* pause.png */; };
 		4D26FA0615A424C300712D88 /* b_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D26FA0415A424C300712D88 /* b_star.png */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D0D76FE15ADBFFB00112134 /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
 		4D26F9F215A40F5000712D88 /* GoldMiningPlayGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldMiningPlayGame.h; sourceTree = "<group>"; };
 		4D26F9F315A40F5000712D88 /* GoldMiningPlayGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldMiningPlayGame.m; sourceTree = "<group>"; };
 		4D26FA0215A421C200712D88 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			children = (
 				4DC5FBC015A6746600653EDF /* BackGround */,
 				4DF2953F15A3D8AB00BB6199 /* Number */,
+				4D0D76FE15ADBFFB00112134 /* board.png */,
 				4D26FA0515A424C300712D88 /* g_star.png */,
 				4D26FA0415A424C300712D88 /* b_star.png */,
 				4DF2953D15A3D8AB00BB6199 /* b.png */,
@@ -494,6 +497,7 @@
 				4D47B6E215A9B9E1007F2793 /* replay.png in Resources */,
 				88BF281315AAA32100458DDD /* gold.png in Resources */,
 				88BF281A15AAB8FF00458DDD /* bg8.png in Resources */,
+				4D0D76FF15ADBFFB00112134 /* board.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

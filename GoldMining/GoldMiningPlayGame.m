@@ -73,6 +73,7 @@ NSString *name = @"";
 @implementation GoldMiningPlayGame
 @synthesize lblA;
 @synthesize levelLabel;
+@synthesize mainScoreLabel;
 @synthesize timerLabel;
 @synthesize timer;
 
@@ -89,6 +90,11 @@ NSString *name = @"";
 {
     [self setGame];
 	[self putSubView];	// 開始的時候只做一次
+	// 自動調整字體大小
+	mainScoreLabel.adjustsFontSizeToFitWidth = YES;
+	lblA.adjustsFontSizeToFitWidth = YES;
+	levelLabel.adjustsFontSizeToFitWidth = YES;
+	timerLabel.adjustsFontSizeToFitWidth = YES;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -103,6 +109,7 @@ NSString *name = @"";
 	gameOverView = nil;
 	name = nil;
 	[self setLevelLabel:nil];
+	[self setMainScoreLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -130,6 +137,7 @@ NSString *name = @"";
 	lblA.text = [[NSString alloc] initWithFormat:@"%d/%d", goldCount, goldNum];
     [self putTimer];  // 放TImer
     [self putButton]; // 放Button
+	mainScoreLabel.text = [NSString stringWithFormat:@"%d", score];
 }
 
 - (void)putTimer
@@ -666,7 +674,7 @@ NSString *name = @"";
     {
         for (int j = 0; j < Col; j++)
         {
-            CGRect frame = CGRectMake(j * btnSize + 20, i * btnSize + 80, btnSize, btnSize);
+            CGRect frame = CGRectMake(j * btnSize + 20, i * btnSize + 100, btnSize, btnSize);
             UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             button.frame = frame;
             //[button setTitle:[arrGame objectAtIndex:k] forState: UIControlStateNormal];
@@ -681,7 +689,6 @@ NSString *name = @"";
             k++;
         }
     }
-
 }
 
 - (IBAction)clickGamePause:(id)sender   //按下暫停按鈕
@@ -714,190 +721,192 @@ NSString *name = @"";
 // 按鈕事件
 - (IBAction)buttonClicked:(UIButton *)btn
 {
-   if (btn.currentTitle == @"")
-   {
-       [btn setTitle:@" " forState: UIControlStateNormal];
-       // btn.enabled = false;
-       // [btn setAlpha:1.0]; // 無作用(?)
-       btn.alpha = 1.0;
-    
-    switch (btn.tag % 100)
+    if (btn.currentTitle == @"")
     {
-        case 11:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g1.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 12:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g2.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 13:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g3.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 14:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g4.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 15:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g5.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 16:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g6.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 17:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g7.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 18:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g8.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 21:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b1.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 22:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b2.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 23:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b3.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 24:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b4.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 25:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b5.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 26:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b6.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 27:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b7.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 28:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b8.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 31:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r1.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 32:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r2.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 33:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r3.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 34:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r4.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 35:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r5.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 36:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r6.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 37:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r7.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 38:
-            [btn setBackgroundImage:[UIImage imageNamed:@"r8.png"] forState:UIControlStateNormal];
-            break;
-            
-        case 41:
-            [btn setBackgroundImage:[UIImage imageNamed:@"g.png"] forState:UIControlStateNormal];
-            score += goldScore;
-            goldCount++;
-            break;
-            
-        case 51:
-            [btn setBackgroundImage:[UIImage imageNamed:@"b.png"] forState:UIControlStateNormal];
-            score -= shitScore;
-            die--;
-            break;
-            
-        case 99:
-            [btn setBackgroundImage:[UIImage imageNamed:@"hole.png"] forState:UIControlStateNormal];
-            int btnLocX = btn.tag / 10000 , btnLocY = btn.tag / 100 % 100;
-            int btnLocK = (btnLocX - 1) * Col + btnLocY - 1;
-            
-            if (btnLocY - 1 >= 1 && btnLocX - 1 >= 1) // 7
-            {
-                UIButton *b = [buttonMapping objectAtIndex:btnLocK - 1 - Col];
-                if (b.enabled)
-                    [self buttonClicked:b];
-            }
-            
-            if (btnLocY + 1 <= Col && btnLocX - 1 >= 1) // 9
-            {
-                UIButton *b = [buttonMapping objectAtIndex:btnLocK + 1 - Col];
-                if (b.enabled)
-                    [self buttonClicked:b];
-            }
-            
-            if (btnLocY - 1 >= 1 && btnLocX + 1 <= Row) // 1
-            {
-                UIButton *b = [buttonMapping objectAtIndex:btnLocK - 1 + Col];
-                if (b.enabled)
-                    [self buttonClicked:b];
-            }
-            
-            if ( btnLocY + 1 <= Col && btnLocX + 1 <= Row) // 6
-            {
-                UIButton *b = [buttonMapping objectAtIndex:btnLocK + 1 + Col];
-                if (b.enabled)
-                    [self buttonClicked:b];
-            }
-            
-            if (btnLocY - 1 >= 1) // 4
-            {
-                UIButton *b = [buttonMapping objectAtIndex:btnLocK - 1];
-                if (b.enabled)
-                    [self buttonClicked:b];
-            }
-            
-            if (btnLocY + 1 <= Col) // 6
-            {
-                UIButton *b = [buttonMapping objectAtIndex:btnLocK + 1];
-                if (b.enabled)
-                    [self buttonClicked:b];
-            }
-            
-            if (btnLocX - 1 >= 1) // 8
-            {
-                UIButton *b = [buttonMapping objectAtIndex:btnLocK - Col];
-                if (b.enabled)
-                    [self buttonClicked:b];
-            }
-            
-            if (btnLocX + 1 <= Row) // 2
-            {
-                UIButton *b = [buttonMapping objectAtIndex:btnLocK + Col];
-                if (b.enabled)
-                    [self buttonClicked:b];
-            }
-            
-            
-            break;
-            
-        default:
-            break;
-    }
+        [btn setTitle:@" " forState: UIControlStateNormal];
+        // btn.enabled = false;
+        // [btn setAlpha:1.0]; // 無作用(?)
+        btn.alpha = 1.0;
+    
+		switch (btn.tag % 100)
+		{
+			case 11:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g1.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 12:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g2.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 13:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g3.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 14:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g4.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 15:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g5.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 16:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g6.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 17:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g7.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 18:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g8.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 21:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b1.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 22:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b2.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 23:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b3.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 24:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b4.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 25:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b5.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 26:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b6.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 27:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b7.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 28:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b8.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 31:
+				[btn setBackgroundImage:[UIImage imageNamed:@"r1.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 32:
+				[btn setBackgroundImage:[UIImage imageNamed:@"r2.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 33:
+				[btn setBackgroundImage:[UIImage imageNamed:@"r3.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 34:
+				[btn setBackgroundImage:[UIImage imageNamed:@"r4.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 35:
+				[btn setBackgroundImage:[UIImage imageNamed:@"r5.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 36:
+				[btn setBackgroundImage:[UIImage imageNamed:@"r6.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 37:
+				[btn setBackgroundImage:[UIImage imageNamed:@"r7.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 38:
+				[btn setBackgroundImage:[UIImage imageNamed:@"r8.png"] forState:UIControlStateNormal];
+				break;
+				
+			case 41:
+				[btn setBackgroundImage:[UIImage imageNamed:@"g.png"] forState:UIControlStateNormal];
+				score += goldScore;
+				goldCount++;
+				break;
+				
+			case 51:
+				[btn setBackgroundImage:[UIImage imageNamed:@"b.png"] forState:UIControlStateNormal];
+				score -= shitScore;
+				die--;
+				break;
+				
+			case 99:
+				[btn setBackgroundImage:[UIImage imageNamed:@"hole.png"] forState:UIControlStateNormal];
+				int btnLocX = btn.tag / 10000 , btnLocY = btn.tag / 100 % 100;
+				int btnLocK = (btnLocX - 1) * Col + btnLocY - 1;
+				
+				if (btnLocY - 1 >= 1 && btnLocX - 1 >= 1) // 7
+				{
+					UIButton *b = [buttonMapping objectAtIndex:btnLocK - 1 - Col];
+					if (b.enabled)
+						[self buttonClicked:b];
+				}
+				
+				if (btnLocY + 1 <= Col && btnLocX - 1 >= 1) // 9
+				{
+					UIButton *b = [buttonMapping objectAtIndex:btnLocK + 1 - Col];
+					if (b.enabled)
+						[self buttonClicked:b];
+				}
+				
+				if (btnLocY - 1 >= 1 && btnLocX + 1 <= Row) // 1
+				{
+					UIButton *b = [buttonMapping objectAtIndex:btnLocK - 1 + Col];
+					if (b.enabled)
+						[self buttonClicked:b];
+				}
+				
+				if ( btnLocY + 1 <= Col && btnLocX + 1 <= Row) // 6
+				{
+					UIButton *b = [buttonMapping objectAtIndex:btnLocK + 1 + Col];
+					if (b.enabled)
+						[self buttonClicked:b];
+				}
+				
+				if (btnLocY - 1 >= 1) // 4
+				{
+					UIButton *b = [buttonMapping objectAtIndex:btnLocK - 1];
+					if (b.enabled)
+						[self buttonClicked:b];
+				}
+				
+				if (btnLocY + 1 <= Col) // 6
+				{
+					UIButton *b = [buttonMapping objectAtIndex:btnLocK + 1];
+					if (b.enabled)
+						[self buttonClicked:b];
+				}
+				
+				if (btnLocX - 1 >= 1) // 8
+				{
+					UIButton *b = [buttonMapping objectAtIndex:btnLocK - Col];
+					if (b.enabled)
+						[self buttonClicked:b];
+				}
+				
+				if (btnLocX + 1 <= Row) // 2
+				{
+					UIButton *b = [buttonMapping objectAtIndex:btnLocK + Col];
+					if (b.enabled)
+						[self buttonClicked:b];
+				}
+				
+				
+				break;
+				
+			default:
+				break;
+		}
+		
+		mainScoreLabel.text = [NSString stringWithFormat:@"%d", score];
     }
     
     //self.lblScore.text = [NSString stringWithFormat:@"第%d關 %d / %d   得分：%d   剩餘生命：%d", level, goldCount, goldNum, score, die];
@@ -1047,6 +1056,7 @@ NSString *name = @"";
     if ([sender.superview isEqual:gameOverView]) [gameOverView removeFromSuperview];
 	
     // 重新初始化
+	score = 0;
     level = 1;
     [self setGame];   // 回第一關
 }
@@ -1128,7 +1138,6 @@ NSString *name = @"";
 	// 放text field和存檔button
 	[nextLevelBtn removeFromSuperview];
 	[gameOverMsgView addSubview:saveScoreView];	// 存成績View
-    NSLog(@"Ya!");
 }
 
 - (IBAction)saveScore:(id)sender
@@ -1173,6 +1182,7 @@ NSString *name = @"";
 	else
 	{
 		// 直接插入
+		NSLog(@"new file score.plist");
 		[dataSource addObject:dictionary];
 	}
 	
@@ -1182,7 +1192,6 @@ NSString *name = @"";
 
 - (void)releaseGame
 {
-	score = 0;
     //timer = nil;
     // 清Button
     [timer invalidate];

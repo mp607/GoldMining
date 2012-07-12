@@ -127,27 +127,45 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" image="bg1.png" id="H9m-Kl-Ff6">
-                                <rect key="frame" x="0.0" y="-22" width="320" height="482"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="board.png" id="LA2-VR-zJN">
+                                <rect key="frame" x="-18" y="0.0" width="357" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="skJ-2m-PZ4">
-                                <rect key="frame" x="85" y="10" width="151" height="79"/>
+                                <rect key="frame" x="85" y="38" width="150" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0/2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="0Rk-Ru-D5j">
-                                <rect key="frame" x="60" y="39" width="32" height="32"/>
+                                <rect key="frame" x="60" y="45" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="gold.png" id="mDD-8t-c07">
-                                <rect key="frame" x="20" y="39" width="32" height="32"/>
+                                <rect key="frame" x="20" y="45" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="bar-hE-qn5">
+                                <rect key="frame" x="60" y="19" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="分數" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="TVa-9u-JOB">
+                                <rect key="frame" x="20" y="19" width="41" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zac-hs-msn">
                                 <rect key="frame" x="246" y="23" width="54" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -164,7 +182,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="第 1 關" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Uwc-wW-a2g">
-                                <rect key="frame" x="20" y="23" width="72" height="21"/>
+                                <rect key="frame" x="85" y="16" width="151" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -176,6 +194,7 @@
                     <connections>
                         <outlet property="lblA" destination="0Rk-Ru-D5j" id="Kwo-7G-Qon"/>
                         <outlet property="levelLabel" destination="Uwc-wW-a2g" id="Hdg-vU-YZG"/>
+                        <outlet property="mainScoreLabel" destination="bar-hE-qn5" id="01X-F2-aMw"/>
                         <outlet property="timerLabel" destination="skJ-2m-PZ4" id="eyS-97-fbz"/>
                     </connections>
                 </viewController>
@@ -188,6 +207,7 @@
         <image name="back.png" width="128" height="128"/>
         <image name="bg1.png" width="640" height="960"/>
         <image name="bg8.png" width="320" height="481"/>
+        <image name="board.png" width="256" height="256"/>
         <image name="gold.png" width="107" height="107"/>
         <image name="info.png" width="209" height="58"/>
         <image name="pause.png" width="128" height="128"/>
@@ -195,27 +215,6 @@
         <image name="score.png" width="209" height="58"/>
         <image name="twitter.png" width="128" height="128"/>
     </resources>
-    <classes>
-        <class className="GoldMiningPlayGame" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningPlayGame.h"/>
-            <relationships>
-                <relationship kind="action" name="clickGamePause:"/>
-                <relationship kind="outlet" name="lblA" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timerLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GoldMiningScoreView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningScoreView.h"/>
-        </class>
-        <class className="GoldMiningViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="infoPressed:"/>
-                <relationship kind="action" name="scorePressed:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
