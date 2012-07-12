@@ -1055,10 +1055,8 @@ NSString *name = @"";
     if ([sender.superview isEqual:pauseView]) [pauseView removeFromSuperview];
     if ([sender.superview isEqual:gameOverView]) [gameOverView removeFromSuperview];
 	
-    // 重新初始化
-	score = 0;
-    level = 1;
-    [self setGame];   // 回第一關
+	// 重新初始化
+    [self setGame];
 }
 
 - (IBAction)nextLevelBtnPressed:(id)sender
@@ -1078,8 +1076,10 @@ NSString *name = @"";
 
 - (IBAction)homeBtnPressed:(id)sender
 {
-	
+	// 清掉
+	[self releaseGame];
 	// bake to Home
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)gameOver:(int)result
@@ -1188,6 +1188,8 @@ NSString *name = @"";
 	
 	// 存檔
 	[dataSource writeToFile:plistPath atomically: YES] ? NSLog(@"Save score success") : NSLog(@"Fail to save score");
+	
+	[saveScoreView removeFromSuperview];
 }
 
 - (void)releaseGame
@@ -1200,8 +1202,6 @@ NSString *name = @"";
     for (int i = 0; i< [buttonMapping count]; i++) {
         [[buttonMapping objectAtIndex:i] removeFromSuperview];
     }
-	
-	[saveScoreView removeFromSuperview];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
