@@ -51,7 +51,7 @@ NSString *name = @"";
 - (void)setGame ;    // 初始化
 - (void)putTimer ;   // 設定Timer
 - (void)putButton ;  // 放按鈕
-- (IBAction)clickGamePause:(id)sender ; //按下暫停按鈕
+- (IBAction)pauseBtnPressed:(id)sender ; //按下暫停按鈕
 
 - (void)updateTimer:(NSTimer *)theTimer ;  // UpdateTimer
 - (IBAction)buttonClicked:(UIButton *)btn ;  // 踩踩樂
@@ -691,7 +691,7 @@ NSString *name = @"";
     }
 }
 
-- (IBAction)clickGamePause:(id)sender   //按下暫停按鈕
+- (IBAction)pauseBtnPressed:(id)sender   //按下暫停按鈕
 {
     isPause = YES;
     // 把 pauseView 叫出來
