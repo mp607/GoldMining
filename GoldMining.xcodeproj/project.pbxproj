@@ -40,6 +40,7 @@
 		4DCE55A315A2E1D70099B114 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCE558415A2E1D70099B114 /* Foundation.framework */; };
 		4DCE55AB15A2E1D70099B114 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DCE55A915A2E1D70099B114 /* InfoPlist.strings */; };
 		4DCE55AE15A2E1D80099B114 /* GoldMiningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCE55AD15A2E1D80099B114 /* GoldMiningTests.m */; };
+		4DEDDE9215B1D4B400902E07 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEDDE9115B1D4B400902E07 /* Default.png */; };
 		4DF2955815A3D8AB00BB6199 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2953415A3D8AB00BB6199 /* info.png */; };
 		4DF2955915A3D8AB00BB6199 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2953515A3D8AB00BB6199 /* play.png */; };
 		4DF2955A15A3D8AB00BB6199 /* score.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2953615A3D8AB00BB6199 /* score.png */; };
@@ -129,6 +130,7 @@
 		4DCE55AA15A2E1D70099B114 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4DCE55AC15A2E1D70099B114 /* GoldMiningTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoldMiningTests.h; sourceTree = "<group>"; };
 		4DCE55AD15A2E1D80099B114 /* GoldMiningTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoldMiningTests.m; sourceTree = "<group>"; };
+		4DEDDE9115B1D4B400902E07 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4DF2953415A3D8AB00BB6199 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		4DF2953515A3D8AB00BB6199 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		4DF2953615A3D8AB00BB6199 /* score.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score.png; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		4DF2953215A3D8AB00BB6199 /* Rescourse */ = {
 			isa = PBXGroup;
 			children = (
+				4DEDDE9115B1D4B400902E07 /* Default.png */,
 				4DF2953315A3D8AB00BB6199 /* Button */,
 				4DF2953C15A3D8AB00BB6199 /* Image */,
 			);
@@ -498,6 +501,7 @@
 				88BF281315AAA32100458DDD /* gold.png in Resources */,
 				88BF281A15AAB8FF00458DDD /* bg8.png in Resources */,
 				4D0D76FF15ADBFFB00112134 /* board.png in Resources */,
+				4DEDDE9215B1D4B400902E07 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
