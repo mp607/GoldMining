@@ -1207,6 +1207,9 @@ UIButton *showScoreBtn;
 	
 	// showScoreBtn
 	[gameOverMsgView addSubview:showScoreBtn];
+	
+	// 拿掉鍵盤
+	[nameText resignFirstResponder];
 }
 
 - (IBAction)showScoreBtnPressed:(id)sender
