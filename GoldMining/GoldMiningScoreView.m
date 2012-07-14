@@ -145,4 +145,34 @@
 	[[[labelArray objectAtIndex:0] objectForKey:@"date"] setText:@"時間"];
 }
 
+- (IBAction)clearBtnPressed:(id)sender 
+{	
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Would you want to delete?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Yes, delete it!" otherButtonTitles:nil];
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [popupQuery showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+	if (buttonIndex == 0) {
+		// 取得檔案路徑
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		NSString *documentsPath = [paths objectAtIndex:0];
+		NSString *plistPath = [documentsPath stringByAppendingPathComponent:@"score.plist"];
+		
+		if ( [[NSFileManager defaultManager] fileExistsAtPath:plistPath] )
+			[[NSFileManager defaultManager] removeItemAtPath:plistPath error:NULL];
+		
+		for (int i=1; i<labelArray.count; i++) {
+			[[[labelArray objectAtIndex:i] objectForKey:@"ranking"] setText:nil];
+			[[[labelArray objectAtIndex:i] objectForKey:@"name"] setText:nil];
+			[[[labelArray objectAtIndex:i] objectForKey:@"score"] setText:nil];
+			[[[labelArray objectAtIndex:i] objectForKey:@"date"] setText:nil];
+		}
+		
+	}
+}
+
+
+
 @end

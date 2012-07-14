@@ -121,6 +121,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clearBtnPressed:" destination="aNE-7h-aDS" eventType="touchUpInside" id="D66-6v-DZ9"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" id="Kq3-zc-x0h">
                                 <rect key="frame" x="0.0" y="60" width="320" height="400"/>
@@ -236,31 +239,6 @@
         <image name="score.png" width="209" height="58"/>
         <image name="twitter.png" width="128" height="128"/>
     </resources>
-    <classes>
-        <class className="GoldMiningPlayGame" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningPlayGame.h"/>
-            <relationships>
-                <relationship kind="action" name="pauseBtnPressed:"/>
-                <relationship kind="outlet" name="lblA" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mainScoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timerLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GoldMiningScoreView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningScoreView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scoreView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="GoldMiningViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoldMiningViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="infoPressed:"/>
-                <relationship kind="action" name="scorePressed:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GoldMiningScoreView : UIViewController
+@interface GoldMiningScoreView : UIViewController <UIActionSheetDelegate>
+
+- (IBAction)clearBtnPressed:(id)sender; 
 
 @end
