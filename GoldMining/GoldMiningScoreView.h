@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GoldMiningScoreView : UIViewController
-{
-    NSMutableArray *dataSource;
-}
+
 @end
