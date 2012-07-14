@@ -40,6 +40,7 @@ UIButton *nextLevelBtn;	// 下一關
 UIView *saveScoreView;
 UITextField *nameText;
 NSString *name = @"";
+UIButton *showScoreBtn;
 
 @interface GoldMiningPlayGame ()
 {
@@ -1011,7 +1012,8 @@ NSString *name = @"";
 	
 	// saveBtn
 	CGRect saveBtnRect = CGRectMake(nameText.frame.size.width, 0, saveScoreView.frame.size.width * 0.3, saveScoreView.frame.size.height);
-	UIButton *saveBtn = [[UIButton alloc] initWithFrame:saveBtnRect];
+	UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	saveBtn.frame = saveBtnRect;
 	[saveBtn setTitle:@"Save" forState:UIControlStateNormal];
 	[saveBtn addTarget:self action:@selector(saveScore:) forControlEvents:UIControlEventTouchUpInside];
 	[saveScoreView addSubview:saveBtn];
@@ -1035,6 +1037,12 @@ NSString *name = @"";
     nextLevelBtn = [[UIButton alloc] initWithFrame:nextLevelBtnRect];
 	[nextLevelBtn setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
 	[nextLevelBtn addTarget:self action:@selector(nextLevelBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+	
+	// showScoreBtn
+	showScoreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	showScoreBtn.frame =  saveScoreViewRect;
+	[showScoreBtn setTitle:@"看排名" forState:UIControlStateNormal];
+	[showScoreBtn addTarget:self action:@selector(showScoreBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (IBAction)backBtnPressed:(id)sender
@@ -1198,6 +1206,16 @@ NSString *name = @"";
 	level = 1;
 	
 	[saveScoreView removeFromSuperview];
+	
+	// showScoreBtn
+	[gameOverMsgView addSubview:showScoreBtn];
+}
+
+- (IBAction)showScoreBtnPressed:(id)sender
+{
+	[showScoreBtn removeFromSuperview];
+	[self releaseGame];
+	[self performSegueWithIdentifier:@"scoreSegue" sender:self];
 }
 
 - (void)releaseGame
@@ -1210,6 +1228,13 @@ NSString *name = @"";
     for (int i = 0; i< [buttonMapping count]; i++) {
         [[buttonMapping objectAtIndex:i] removeFromSuperview];
     }
+	
+	// 針對showScoreBtn
+	for (id key in [gameOverMsgView subviews])
+	{
+		if ([key isEqual:showScoreBtn]) [key removeFromSuperview];
+		if ([key isEqual:saveScoreView]) [saveScoreView removeFromSuperview];
+	}
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
