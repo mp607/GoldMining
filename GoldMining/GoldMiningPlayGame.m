@@ -1205,8 +1205,6 @@ UIButton *showScoreBtn;
 	score = 0;
 	level = 1;
 	
-	[saveScoreView removeFromSuperview];
-	
 	// showScoreBtn
 	[gameOverMsgView addSubview:showScoreBtn];
 }
@@ -1233,7 +1231,7 @@ UIButton *showScoreBtn;
 	for (id key in [gameOverMsgView subviews])
 	{
 		if ([key isEqual:showScoreBtn]) [key removeFromSuperview];
-		if ([key isEqual:saveScoreView]) [saveScoreView removeFromSuperview];
+		if ([key isEqual:saveScoreView]) [key removeFromSuperview];
 	}
 }
 
