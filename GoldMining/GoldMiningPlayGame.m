@@ -1088,6 +1088,9 @@ UIButton *showScoreBtn;
 
 - (IBAction)homeBtnPressed:(id)sender
 {
+	// 參數復原
+	score = 0;
+	level = 1;
 	// 清掉
 	[self releaseGame];
 	// bake to Home
