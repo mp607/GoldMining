@@ -52,7 +52,7 @@
     TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
         
     //設定推文的內容
-    [twitter setInitialText:@"iOS 5 Twitter API 測試。"];
+    [twitter setInitialText:@"我最喜歡採黃金了>////<"];
         
     //顯示viewcontroller
     [self presentModalViewController:twitter animated:YES];
