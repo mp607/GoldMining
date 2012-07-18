@@ -39,7 +39,7 @@ UIButton *rePlayBtn;
 UIButton *nextLevelBtn;	// 下一關
 UIView *saveScoreView;
 UITextField *nameText;
-NSString *name = @"";
+NSString *name;
 UIButton *showScoreBtn;
 
 @interface GoldMiningPlayGame ()
@@ -1006,7 +1006,7 @@ UIButton *showScoreBtn;
 	nameText = [[UITextField alloc] initWithFrame:nameTextRect];
 	nameText.backgroundColor = [UIColor whiteColor];
 	nameText.borderStyle = UITextBorderStyleRoundedRect;
-	nameText.text = name;
+	nameText.text = [name isEqualToString:@"無名氏"] ? nil : name;
 	nameText.placeholder = @"Your Name";	// 提示文字
 	[saveScoreView addSubview:nameText];
 	
@@ -1159,7 +1159,7 @@ UIButton *showScoreBtn;
 {
 	// 參考 http://furnacedigital.blogspot.tw/2012/03/document.html#more
 	
-	name = (([nameText.text isEqualToString:@""]) ? @"無名氏" : nameText.text);
+	name = (([nameText.text length] > 0) ? nameText.text : @"無名氏");
     
     // 取得檔案路徑
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
