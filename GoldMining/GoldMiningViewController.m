@@ -11,9 +11,6 @@
 
 @interface GoldMiningViewController ()
 
-- (IBAction)scorePressed:(id)sender ;
-- (IBAction)infoPressed:(id)sender ;
-
 @end
 
 @implementation GoldMiningViewController
@@ -33,17 +30,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-- (IBAction)scorePressed:(id)sender 
-{
-    // run Score View
-}
-
-- (IBAction)infoPressed:(id)sender 
-{
-    // run Info View
-    [[[UIAlertView alloc] initWithTitle:@"About GoldMining"message:@"This is an iPhone Game" delegate:nil cancelButtonTitle:@"Done" otherButtonTitles:nil, nil] show];
 }
 
 - (IBAction)twitterPressed:(id)sender 
