@@ -1055,6 +1055,10 @@ NSString *name = @"";
     if ([sender.superview isEqual:pauseView]) [pauseView removeFromSuperview];
     if ([sender.superview isEqual:gameOverView]) [gameOverView removeFromSuperview];
 	
+	// 參數復原
+	score = 0;
+	level = 1;
+
 	// 重新初始化
     [self setGame];
 }
@@ -1188,6 +1192,10 @@ NSString *name = @"";
 	
 	// 存檔
 	[dataSource writeToFile:plistPath atomically: YES] ? NSLog(@"Save score success") : NSLog(@"Fail to save score");
+
+	// 參數復原
+	score = 0;
+	level = 1;
 	
 	[saveScoreView removeFromSuperview];
 }
