@@ -27,6 +27,9 @@
 
 - (void)viewDidLoad
 {	
+	// 不允許捲動`
+	[(UIScrollView *)[[webView subviews] objectAtIndex:0]    setBounces:NO];
+	
 	// 取得檔案路徑 
     NSString *path = [[NSBundle mainBundle] pathForResource:@"help" ofType:@"html"];
 
