@@ -1,0 +1,33 @@
+.content {
+	margin:0px auto;
+	width:320;
+	height:480;
+}
+.main_title {
+	font-size:xx-large;
+	line-height:150%;
+	text-align:center;
+}
+
+.text {
+}
+
+.title {
+	font-size:large;
+	line-height:200%;
+	text-align:center;
+}
+
+.txt {
+	text-indent:30px;
+}
+
+#score {
+	text-indent:0px;
+	font-size:small;
+	text-align:center;
+}
+
+img {
+	vertical-align:middle;
+}

@@ -83,6 +83,7 @@
 		4DF2957815A3D8AB00BB6199 /* r8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DF2955715A3D8AB00BB6199 /* r8.png */; };
 		4DF7A37615B7B11C0033AAB8 /* GoldMiningHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF7A37515B7B11C0033AAB8 /* GoldMiningHelp.m */; };
 		4DF7A37B15B7BF9B0033AAB8 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 4DF7A37A15B7BF9B0033AAB8 /* help.html */; };
+		4DF7A37D15B7DDDF0033AAB8 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 4DF7A37C15B7DDDF0033AAB8 /* style.css */; };
 		887B5A9615AAA9ED003D3C71 /* GoldMiningScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 887B5A9515AAA9ED003D3C71 /* GoldMiningScoreView.m */; };
 		88BF281315AAA32100458DDD /* gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BF281215AAA32100458DDD /* gold.png */; };
 		88BF281A15AAB8FF00458DDD /* bg8.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BF281915AAB8FF00458DDD /* bg8.png */; };
@@ -183,6 +184,7 @@
 		4DF7A37415B7B11C0033AAB8 /* GoldMiningHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldMiningHelp.h; sourceTree = "<group>"; };
 		4DF7A37515B7B11C0033AAB8 /* GoldMiningHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldMiningHelp.m; sourceTree = "<group>"; };
 		4DF7A37A15B7BF9B0033AAB8 /* help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = help.html; path = html/help.html; sourceTree = "<group>"; };
+		4DF7A37C15B7DDDF0033AAB8 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = style.css; path = html/style.css; sourceTree = "<group>"; };
 		887B5A9415AAA9ED003D3C71 /* GoldMiningScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoldMiningScoreView.h; sourceTree = "<group>"; };
 		887B5A9515AAA9ED003D3C71 /* GoldMiningScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoldMiningScoreView.m; sourceTree = "<group>"; };
 		88BF281215AAA32100458DDD /* gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gold.png; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		4DF7A37715B7B5170033AAB8 /* html */ = {
 			isa = PBXGroup;
 			children = (
+				4DF7A37C15B7DDDF0033AAB8 /* style.css */,
 				4DF7A37A15B7BF9B0033AAB8 /* help.html */,
 			);
 			name = html;
@@ -547,6 +550,7 @@
 				4D8C755D15B1E6B300D24634 /* Icon@2x.png in Resources */,
 				4D8C755E15B1E6B300D24634 /* iTunesArtwork in Resources */,
 				4DF7A37B15B7BF9B0033AAB8 /* help.html in Resources */,
+				4DF7A37D15B7DDDF0033AAB8 /* style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
