@@ -2,10 +2,11 @@
 	margin:0px auto;
 	width:320;
 	height:480;
+	vertical-align:middle;
 }
 .main_title {
 	font-size:xx-large;
-	line-height:150%;
+	line-height:130%;
 	text-align:center;
 }
 
@@ -14,7 +15,7 @@
 
 .title {
 	font-size:large;
-	line-height:200%;
+	line-height:180%;
 	text-align:center;
 }
 
@@ -24,7 +25,6 @@
 
 #score {
 	text-indent:0px;
-	font-size:small;
 	text-align:center;
 }
 
